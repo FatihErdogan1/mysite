@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fatih Erdoğan | Portföy</title>
+    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <nav class="container">
+            <a href="#" class="nav-logo">F.E.</a>
+            <ul class="nav-links">
+                <li><a href="#home">Ana Sayfa</a></li>
+                <li><a href="#about">Hakkımda</a></li>
+                <li><a href="#skills">Yetenekler</a></li>
+                <li><a href="#portfolio">Portföy</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+
+            <div class="theme-switch-container">
+                <label class="theme-switch" for="theme-toggle">
+                    <input type="checkbox" id="theme-toggle" />
+                    <div class="slider">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-sun"></i>
+                            <i class="fas fa-moon"></i>
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="home" class="hero">
+            <div class="container hero-content">
+                <p class="hero-intro">Merhaba, ben</p>
+                <h1 class="hero-title">Fatih Erdoğan.</h1>
+                <h2 class="hero-subtitle">
+                    <span class="typewriter"></span>
+                </h2>
+                <p class="hero-description">
+                    Teknolojiye ve yenilikçi çözümler üretmeye tutkulu, Işık Üniversitesi Yönetim Bilişim Sistemleri 3. sınıf öğrencisiyim.
+                </p>
+                <div class="hero-socials">
+                    <a href="https://github.com/kullanici-adiniz" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/kullanici-adiniz" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="about" class="about container section-padding">
+            <h2 class="section-title"><span>01.</span> Hakkımda</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Merhaba! Adım Fatih Erdoğan, Işık Üniversitesi'nde Yönetim Bilişim Sistemleri bölümünde 3. sınıf öğrencisiyim. Algoritmik düşünme ve problem çözme yeteneklerimi, yazılım geliştirme alanında derinleştirerek kariyerimi şekillendiriyorum.
+                    </p>
+                    <p>
+                        Özellikle mobil uygulama geliştirme ve backend teknolojileri üzerine yoğunlaşmış durumdayım. C# ve Kotlin dillerinde orta seviyede bilgi birikimine sahibim ve bu teknolojileri kullanarak kullanıcı odaklı, verimli ve ölçeklenebilir uygulamalar geliştirmeyi hedefliyorum.
+                    </p>
+                    <p>
+                        Akademik hayatım boyunca öğrendiğim teorik bilgileri pratik projelere dönüştürmeye ve sürekli olarak yeni teknolojileri öğrenmeye büyük bir heves duyuyorum.
+                    </p>
+                    <a href="cv.pdf" class="btn" download>CV'mi İndir</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://placehold.co/400x400/112240/64ffda?text=Fatih" alt="Fatih Erdoğan">
+                </div>
+            </div>
+        </section>
+
+
+        <section id="skills" class="skills container section-padding">
+            <h2 class="section-title"><span>02.</span> Yeteneklerim</h2>
+            <div class="skills-grid">
+                <div class="skill-card"><i class="fa-solid fa-code"></i><h3>C#</h3></div>
+                <div class="skill-card"><i class="fa-brands fa-kickstarter-k"></i><h3>Kotlin</h3></div>
+                <div class="skill-card"><i class="fa-solid fa-mobile-screen-button"></i><h3>Android</h3></div>
+                <div class="skill-card"><i class="fa-solid fa-database"></i><h3>SQL</h3></div>
+                <div class="skill-card"><i class="fa-brands fa-html5"></i><h3>HTML & CSS</h3></div>
+                <div class="skill-card"><i class="fa-brands fa-js"></i><h3>JavaScript</h3></div>
+                <div class="skill-card"><i class="fa-brands fa-git-alt"></i><h3>Git</h3></div>
+                <div class="skill-card"><i class="fa-solid fa-laptop-code"></i><h3>OOP</h3></div>
+            </div>
+        </section>
+
+
+        <section id="portfolio" class="portfolio container section-padding">
+            <h2 class="section-title"><span>03.</span> Projelerim</h2>
+            <div class="portfolio-grid">
+  
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://placehold.co/600x400/112240/64ffda?text=Proje+1" alt="Proje 1">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Proje Adı 1</h3>
+                        <p class="project-description">
+                            Bu projede, [projenin amacı ve kısa açıklaması]. Kullanıcıların [problem]'ini çözen bir mobil uygulama geliştirdim.
+                        </p>
+                        <ul class="project-tags">
+                            <li>Kotlin</li>
+                            <li>Android Studio</li>
+                            <li>Firebase</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+   
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://placehold.co/600x400/112240/64ffda?text=Proje+2" alt="Proje 2">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Proje Adı 2</h3>
+                        <p class="project-description">
+                           [Projenin amacı]. C# ve .NET kullanarak geliştirdiğim bir masaüstü veya web uygulaması.
+                        </p>
+                        <ul class="project-tags">
+                            <li>C#</li>
+                            <li>.NET</li>
+                            <li>SQL Server</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="contact" class="contact container section-padding">
+            <h2 class="section-title"><span>04.</span> İletişim</h2>
+            <div class="contact-content">
+                <p>Yeni fırsatlar ve projeler için her zaman iletişimde olmaktan mutluluk duyarım. Benimle tanışmak veya bir soru sormak isterseniz, lütfen aşağıdaki butonu kullanın.</p>
+                <a href="mailto:fatih.erdogan@mail.com" class="btn">Merhaba De!</a>
+            </div>
+        </section>
+    </main>
+    
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Fatih Erdoğan. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
