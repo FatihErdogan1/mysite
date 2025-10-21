@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Yemek Pişirme Simülasyonu</title>
+    <!-- Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter --><link rel="preconnect" href="https://fonts.googleapis">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Tone.js for sound effects --><script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            touch-action: manipulation;
+        }
+        .timer-bar-bg { background-color: #4a5568; }
+        .timer-bar-fill { transition: width 1s linear; }
+        .ingredient-btn:active { transform: scale(0.95); }
+    </style>
+</head>
+<body class="bg-gray-800 text-white flex flex-col items-center justify-center h-screen overflow-hidden p-4">
+
+    <div class="w-full max-w-4xl mx-auto bg-gray-900/50 rounded-2xl shadow-2xl p-4 md:p-6 flex flex-col text-center">
+        <h1 class="text-4xl font-black tracking-tighter mb-2">Hızlı Restoran</h1>
+
+        <!-- Üst Panel: Skor, Müşteri vb. -->
+        <div class="flex justify-around items-center bg-gray-700/50 p-2 rounded-lg mb-4 text-lg">
+            <div>
+                <span class="font-bold">CİRO</span>
+                <p id="money-display" class="text-2xl font-black">$0</p>
+            </div>
+            <div>
+                <span class="font-bold">KAÇAN MÜŞTERİ</span>
+                <p id="strikes-display" class="text-2xl font-black">0 / 3</p>
+            </div>
+        </div>
+
+        <!-- Müşteri ve Sipariş Alanı -->
+        <div id="customer-area" class="h-24 bg-gray-800/50 rounded-lg flex items-center justify-center mb-4">
+            <div id="customer-order" class="hidden items-center gap-4">
+                <span id="customer-icon" class="text-5xl">🧑</span>
+                <div class="bg-white text-black p-2 rounded-lg relative">
+                    <div id="order-bubble" class="text-2xl font-bold"></div>
+                    <!-- Konuşma balonu üçgeni -->
+                    <div class="absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-r-8 border-r-white"></div>
+                </div>
+            </div>
+             <div id="no-customer-message">
+                <p class="text-gray-400">Müşteri bekleniyor...</p>
+            </div>
+        </div>
+        <div class="w-full h-4 timer-bar-bg rounded-full overflow-hidden mb-4">
+            <div id="customer-timer" class="h-full bg-green-500 timer-bar-fill" style="width: 100%;"></div>
+        </div>
+
+        <!-- Mutfak Alanı -->
+        <div class="bg-gray-700/50 rounded-lg p-4">
+            <!-- Hazırlama Tabağı -->
+            <div id="plate-area" class="h-20 bg-gray-200 rounded-lg flex items-center justify-center text-3xl mb-4 p-2 border-2 border-gray-400">
+                <!-- Hazırlanan malzemeler buraya gelecek -->
+            </div>
+            <!-- Malzemeler -->
+            <div id="ingredients-area" class="grid grid-cols-3 md:grid-cols-6 gap-2 mb-4">
+                <!-- Malzeme butonları buraya gelecek -->
+            </div>
+            <!-- Servis ve Çöp Butonları -->
+            <div class="grid grid-cols-2 gap-4">
+                 <button id="trash-button" class="p-4 bg-red-600 hover:bg-red-500 rounded-lg font-bold text-xl">ÇÖPE AT</button>
+                 <button id="serve-button" class="p-4 bg-blue-600 hover:bg-blue-500 rounded-lg font-bold text-xl">SERVİS ET</button>
+            </div>
+        </div>
+
+    </div>
+
+     <!-- Başlangıç / Bitiş Ekranı -->
+    <div id="ui-overlay" class="absolute inset-0 bg-black/70 flex flex-col items-center justify-center text-white text-center z-30">
+        <div id="start-screen">
+            <h2 class="text-6xl font-extrabold mb-4">Hızlı Restoran</h2>
+            <p class="text-xl mb-8">Müşterilerin siparişlerini zamanında hazırla!</p>
+            <button id="start-button" class="bg-purple-600 hover:bg-purple-500 font-bold py-3 px-8 rounded-full text-2xl shadow-lg">BAŞLA</button>
+        </div>
+        <div id="end-screen" class="hidden">
+            <h2 class="text-6xl font-extrabold mb-2">Oyun Bitti!</h2>
+            <p class="text-2xl mb-4">Toplam Ciro: <span id="final-money" class="font-bold"></span></p>
+            <button id="restart-button" class="mt-4 bg-purple-600 hover:bg-purple-500 font-bold py-3 px-8 rounded-full text-2xl shadow-lg">YENİDEN BAŞLA</button>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elementleri
+        const moneyEl = document.getElementById('money-display');
+        const strikesEl = document.getElementById('strikes-display');
+        const customerArea = document.getElementById('customer-area');
+        const customerOrderEl = document.getElementById('customer-order');
+        const noCustomerMessage = document.getElementById('no-customer-message');
+        const customerIconEl = document.getElementById('customer-icon');
+        const orderBubbleEl = document.getElementById('order-bubble');
+        const customerTimerEl = document.getElementById('customer-timer');
+        const plateAreaEl = document.getElementById('plate-area');
+        const ingredientsAreaEl = document.getElementById('ingredients-area');
+        const trashButton = document.getElementById('trash-button');
+        const serveButton = document.getElementById('serve-button');
+        const uiOverlay = document.getElementById('ui-overlay');
+        const startScreen = document.getElementById('start-screen');
+        const endScreen = document.getElementById('end-screen');
+        const finalMoneyEl = document.getElementById('final-money');
+        const startButton = document.getElementById('start-button');
+        const restartButton = document.getElementById('restart-button');
+
+        // Sesler
+        const clickSound = new Tone.Synth({ oscillator: { type: 'sine', frequency: 440 }, envelope: { attack: 0.005, decay: 0.05, sustain: 0, release: 0.1 } }).toDestination();
+        const successSound = new Tone.Synth({ oscillator: { type: 'triangle', frequency: 880 }, envelope: { attack: 0.01, decay: 0.1, sustain: 0.1, release: 0.2 } }).toDestination();
+        const errorSound = new Tone.Synth({ oscillator: { type: 'square', frequency: 220 }, envelope: { attack: 0.01, decay: 0.1, sustain: 0, release: 0.1 } }).toDestination();
+
+        // Oyun Ayarları
+        const INGREDIENTS = { bun: '🍞', patty: '🥩', lettuce: '🥬', tomato: '🍅', cheese: '🧀' };
+        const RECIPES = [
+            { name: 'Cheeseburger', price: 15, ingredients: ['bun', 'patty', 'cheese', 'bun'] },
+            { name: 'Hamburger', price: 12, ingredients: ['bun', 'patty', 'bun'] },
+            { name: 'Salad Burger', price: 18, ingredients: ['bun', 'patty', 'lettuce', 'tomato', 'bun'] },
+        ];
+        const MAX_STRIKES = 3;
+        const CUSTOMER_WAIT_TIME = 15; // saniye
+        const CUSTOMERS = ['🧑', '👩', '👨', '👵', '👴'];
+        
+        // Oyun Durumu
+        let money = 0;
+        let strikes = 0;
+        let currentOrder = null;
+        let plate = [];
+        let customerTimer;
+        let gameInterval;
+        let nextCustomerTimeout;
+
+        function init() {
+            money = 0;
+            strikes = 0;
+            currentOrder = null;
+            plate = [];
+            uiOverlay.classList.remove('hidden');
+            startScreen.classList.remove('hidden');
+            endScreen.classList.add('hidden');
+            updateUI();
+            renderIngredients();
+        }
+
+        function startGame() {
+            Tone.start();
+            uiOverlay.classList.add('hidden');
+            nextCustomer();
+        }
+
+        function renderIngredients() {
+            ingredientsAreaEl.innerHTML = '';
+            for (const key in INGREDIENTS) {
+                const btn = document.createElement('button');
+                btn.className = 'ingredient-btn p-4 bg-gray-600 hover:bg-gray-500 rounded-lg text-4xl transition-transform';
+                btn.textContent = INGREDIENTS[key];
+                btn.dataset.ingredient = key;
+                btn.addEventListener('click', () => addIngredient(key));
+                ingredientsAreaEl.appendChild(btn);
+            }
+        }
+        
+        function updateUI() {
+            moneyEl.textContent = `$${money}`;
+            strikesEl.textContent = `${strikes} / ${MAX_STRIKES}`;
+            plateAreaEl.textContent = plate.map(ing => INGREDIENTS[ing]).join('');
+        }
+
+        function addIngredient(ingredient) {
+            if (!currentOrder) return;
+            clickSound.triggerAttackRelease("C5", "32n");
+            plate.push(ingredient);
+            updateUI();
+        }
+
+        function clearPlate() {
+            if (!currentOrder) return;
+            errorSound.triggerAttackRelease("A2", "16n");
+            plate = [];
+            updateUI();
+        }
+        
+        function nextCustomer() {
+            if (strikes >= MAX_STRIKES) return;
+            clearPlate();
+            currentOrder = { ...RECIPES[Math.floor(Math.random() * RECIPES.length)] };
+            currentOrder.timeLeft = CUSTOMER_WAIT_TIME;
+            
+            customerIconEl.textContent = CUSTOMERS[Math.floor(Math.random() * CUSTOMERS.length)];
+            orderBubbleEl.textContent = currentOrder.ingredients.map(ing => INGREDIENTS[ing]).join('');
+            
+            customerOrderEl.classList.remove('hidden');
+            customerOrderEl.classList.add('flex');
+            noCustomerMessage.classList.add('hidden');
+            
+            customerTimerEl.style.transition = 'none';
+            customerTimerEl.style.width = '100%';
+            customerTimerEl.style.backgroundColor = '#22c55e';
+            
+            // Zamanlayıcıyı başlat
+            setTimeout(() => {
+                customerTimerEl.style.transition = `width ${CUSTOMER_WAIT_TIME}s linear`;
+                customerTimerEl.style.width = '0%';
+            }, 100);
+            
+            gameInterval = setInterval(updateTimer, 1000);
+            updateUI();
+        }
+
+        function updateTimer() {
+            if (!currentOrder) return;
+            currentOrder.timeLeft--;
+            
+            if (currentOrder.timeLeft < CUSTOMER_WAIT_TIME / 2) {
+                customerTimerEl.style.backgroundColor = '#f59e0b'; // Sarı
+            }
+            if (currentOrder.timeLeft < CUSTOMER_WAIT_TIME / 4) {
+                customerTimerEl.style.backgroundColor = '#ef4444'; // Kırmızı
+            }
+            
+            if (currentOrder.timeLeft <= 0) {
+                customerLeaves(false);
+            }
+        }
+
+        function serveOrder() {
+            if (!currentOrder) return;
+
+            const isCorrect = JSON.stringify(plate) === JSON.stringify(currentOrder.ingredients);
+            if (isCorrect) {
+                successSound.triggerAttackRelease("E5", "8n");
+                money += currentOrder.price;
+                customerLeaves(true);
+            } else {
+                errorSound.triggerAttackRelease("A2", "16n");
+                strikes++;
+                customerLeaves(false);
+            }
+        }
+
+        function customerLeaves(wasHappy) {
+            clearInterval(gameInterval);
+            currentOrder = null;
+            
+            customerOrderEl.classList.add('hidden');
+            noCustomerMessage.classList.remove('hidden');
+            
+            if (strikes >= MAX_STRIKES) {
+                endGame();
+            } else {
+                // Bir sonraki müşteri gelmeden önce kısa bir bekleme süresi
+                nextCustomerTimeout = setTimeout(nextCustomer, 2000);
+            }
+            updateUI();
+        }
+
+        function endGame() {
+            clearTimeout(nextCustomerTimeout);
+            clearInterval(gameInterval);
+            finalMoneyEl.textContent = `$${money}`;
+            uiOverlay.classList.remove('hidden');
+            endScreen.classList.remove('hidden');
+            startScreen.classList.add('hidden');
+        }
+
+        // Event Listeners
+        startButton.addEventListener('click', startGame);
+        restartButton.addEventListener('click', init);
+        serveButton.addEventListener('click', serveOrder);
+        trashButton.addEventListener('click', clearPlate);
+        
+        init();
+    </script>
+</body>
+</html>
+

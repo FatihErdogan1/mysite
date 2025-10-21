@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penaltı Düellosu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #1a2a3a; --field-color-light: #4CAF50; --field-color-dark: #388E3C;
+            --goal-post-color: #f5f5f5; --ball-color: #fff; --text-light: #e0e0e0;
+            --font-display: 'Audiowide', sans-serif; --font-body: 'Roboto', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body); display: flex; justify-content: center; align-items: center;
+            min-height: 100vh; margin: 0; background: linear-gradient(to bottom, var(--bg-color), #0f1a23);
+            color: var(--text-light); text-align: center; overflow: hidden;
+        }
+
+        .screen { width: 95%; max-width: 900px; background-color: rgba(0, 0, 0, 0.3); padding: 30px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); border: 2px solid rgba(255, 255, 255, 0.1); }
+        .hidden { display: none; }
+
+        h1 { font-family: var(--font-display); font-size: 3rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 3px; color: #f7d242; }
+        
+        /* Takım Seçim Ekranı */
+        #team-selection-screen .team-selector { margin-bottom: 20px; }
+        #team-selection-screen label { font-size: 1.5rem; margin-right: 15px; }
+        #team-selection-screen select { font-size: 1.2rem; padding: 10px; border-radius: 8px; background-color: #37474F; color: var(--text-light); border: 2px solid #546E7A; }
+        #start-game-btn { font-family: var(--font-display); padding: 15px 40px; font-size: 1.5rem; border-radius: 12px; border: none; background-color: #4CAF50; color: white; cursor: pointer; transition: 0.3s; }
+        #start-game-btn:hover { background-color: #388E3C; }
+
+        /* Skor Tablosu */
+        #scoreboard { display: flex; justify-content: space-between; align-items: center; font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; background: #37474F; padding: 15px; border-radius: 12px; }
+        #player1-score, #player2-score { padding: 5px 15px; border-radius: 8px; color: white; transition: transform 0.3s; }
+        #turn-info { font-size: 1.8rem; font-family: var(--font-display); }
+
+        /* Kale Alanı */
+        #goal-area { width: 100%; height: 400px; background: linear-gradient(to bottom, var(--field-color-light) 0%, var(--field-color-dark) 100%); border: 8px solid #333; border-radius: 15px; position: relative; overflow: hidden; margin: 0 auto 20px auto; perspective: 1000px; }
+        
+        /* Kale Ağı (File) */
+        #goal-net { position: absolute; top: 0; left: 10%; width: 80%; height: 80%;
+            background-image:
+                repeating-linear-gradient(to right, transparent, transparent 19px, rgba(255,255,255,0.2) 20px),
+                repeating-linear-gradient(to bottom, transparent, transparent 19px, rgba(255,255,255,0.2) 20px);
+            z-index: 1; opacity: 0.7; }
+        .goal-scored #goal-net { animation: net-shake 0.5s ease; }
+        @keyframes net-shake { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+        /* Kale Direkleri */
+        .goal-post { position: absolute; bottom: 0; width: 20px; height: 80%; background-color: var(--goal-post-color); z-index: 15; }
+        .left-post { left: 10%; } .right-post { right: 10%; }
+        .crossbar { position: absolute; top: 20%; left: 10%; width: 80%; height: 20px; background-color: var(--goal-post-color); z-index: 15; }
+
+        /* Top */
+        #ball { width: 30px; height: 30px; background: radial-gradient(circle at 30% 30%, #fff, #ccc); border-radius: 50%; position: absolute; bottom: 30px; left: calc(50% - 15px); transition: all 0.7s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 5px 10px rgba(0,0,0,0.4); z-index: 10; }
+
+        /* Kaleci (SVG) */
+        #keeper { width: 120px; height: 120px; position: absolute; bottom: 0; left: calc(50% - 60px); transition: all 0.5s ease-in-out; z-index: 5; animation: keeper-idle 2s infinite ease-in-out; }
+        @keyframes keeper-idle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+        /* Mesaj ve Kontrol Panelleri */
+        #message { font-family: var(--font-display); font-size: 2rem; height: 60px; }
+        .controls { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
+        .controls .span-3 { grid-column: span 3; }
+        .control-btn { padding: 15px 10px; font-size: 1.1rem; border: none; border-radius: 10px; cursor: pointer; transition: 0.3s; color: white; text-transform: uppercase; }
+        .control-btn:hover:not(:disabled) { transform: translateY(-3px); }
+        .control-btn.shot { background-color: #007bff; } .control-btn.shot:hover:not(:disabled) { background-color: #0056b3; }
+        .control-btn.save { background-color: #dc3545; } .control-btn.save:hover:not(:disabled) { background-color: #c82333; }
+        .control-btn:disabled { background-color: #556c7d; cursor: not-allowed; opacity: 0.7; }
+    </style>
+</head>
+<body>
+
+    <div id="team-selection-screen" class="screen">
+        <h1>PENALTI DÜELLOSU</h1>
+        <div class="team-selector">
+            <label for="player1-team">OYUNCU 1 TAKIMI:</label>
+            <select id="player1-team"></select>
+        </div>
+        <div class="team-selector">
+            <label for="player2-team">OYUNCU 2 TAKIMI:</label>
+            <select id="player2-team"></select>
+        </div>
+        <button id="start-game-btn" onclick="startGame()">MAÇA BAŞLA</button>
+    </div>
+
+    <div id="game-screen" class="screen hidden">
+        <div id="scoreboard">
+            <div id="player1-score-container">P1: <span id="player1-score">0</span></div>
+            <div id="turn-info">1. TUR</div>
+            <div id="player2-score-container">P2: <span id="player2-score">0</span></div>
+        </div>
+
+        <div id="goal-area">
+            <div id="goal-net"></div>
+            <div class="goal-post left-post"></div>
+            <div class="goal-post right-post"></div>
+            <div class="crossbar"></div>
+            
+            <svg id="keeper" viewBox="0 0 100 100">
+                <g id="keeper-group">
+                    <rect id="keeper-jersey" x="30" y="20" width="40" height="45" rx="5" fill="#d32f2f"/>
+                    <rect id="keeper-shorts" x="30" y="65" width="40" height="15" fill="#333"/>
+                    <circle cx="30" cy="25" r="10" fill="#fff"/> <circle cx="70" cy="25" r="10" fill="#fff"/> </g>
+            </svg>
+            <div id="ball"></div>
+        </div>
+
+        <div id="message"></div>
+
+        <div id="shooter-controls" class="controls hidden">
+            <button class="control-btn shot" onclick="playerSelects('tl')">SOL ÜST</button>
+            <button class="control-btn shot span-3" onclick="playerSelects('p')">PANENKA</button>
+            <button class="control-btn shot" onclick="playerSelects('tr')">SAĞ ÜST</button>
+            <button class="control-btn shot" onclick="playerSelects('bl')">SOL ALT</button>
+            <button class="control-btn shot" onclick="playerSelects('br')">SAĞ ALT</button>
+        </div>
+        <div id="keeper-controls" class="controls hidden">
+            <button class="control-btn save" onclick="playerSelects('tl')">SOL ÜST</button>
+            <button class="control-btn save" onclick="playerSelects('tr')">SAĞ ÜST</button>
+            <button class="control-btn save" onclick="playerSelects('bl')">SOL ALT</button>
+            <button class="control-btn save" onclick="playerSelects('br')">SAĞ ALT</button>
+        </div>
+    </div>
+
+<script>
+    // --- OYUN VERİLERİ VE SABİTLER ---
+    const TEAMS = {
+        "gs": { name: "Galatasaray", color: "#FDB913", shorts: "#A6002A" },
+        "fb": { name: "Fenerbahçe", color: "#003366", shorts: "#FFD700" },
+        "bjk": { name: "Beşiktaş", color: "#FFFFFF", shorts: "#000000" },
+        "ts": { name: "Trabzonspor", color: "#8B0000", shorts: "#66CCCC" },
+    };
+
+    const POSITIONS = {
+        'tl': { ball: 'translate(-180px, -230px)', keeper: 'translate(-130px, -40px)' }, // Top-Left
+        'tr': { ball: 'translate(180px, -230px)', keeper: 'translate(130px, -40px)' },  // Top-Right
+        'bl': { ball: 'translate(-170px, -100px)', keeper: 'translate(-140px, 0)' },   // Bottom-Left
+        'br': { ball: 'translate(170px, -100px)', keeper: 'translate(140px, 0)' },    // Bottom-Right
+        'p':  { ball: 'translate(0, -120px) scale(0.8)', keeper: 'translate(-140px, 0)' } // Panenka (Kaleci rastgele bir alta atlar)
+    };
+
+    // --- DOM ELEMENTLERİ ---
+    const teamSelectionScreen = document.getElementById('team-selection-screen');
+    const gameScreen = document.getElementById('game-screen');
+    const player1TeamSelect = document.getElementById('player1-team');
+    const player2TeamSelect = document.getElementById('player2-team');
+    const player1ScoreEl = document.getElementById('player1-score');
+    const player2ScoreEl = document.getElementById('player2-score');
+    const p1Container = document.getElementById('player1-score-container');
+    const p2Container = document.getElementById('player2-score-container');
+    const turnInfoEl = document.getElementById('turn-info');
+    const messageEl = document.getElementById('message');
+    const shooterControls = document.getElementById('shooter-controls');
+    const keeperControls = document.getElementById('keeper-controls');
+    const ball = document.getElementById('ball');
+    const keeperSVG = document.getElementById('keeper');
+    const keeperJersey = document.getElementById('keeper-jersey');
+    const keeperShorts = document.getElementById('keeper-shorts');
+    const goalNet = document.getElementById('goal-net');
+
+    // --- OYUN DURUMU (STATE) ---
+    let state = {};
+
+    function initializeTeamSelection() {
+        let options = '';
+        for (const key in TEAMS) {
+            options += `<option value="${key}">${TEAMS[key].name}</option>`;
+        }
+        player1TeamSelect.innerHTML = options;
+        player2TeamSelect.innerHTML = options;
+        player2TeamSelect.selectedIndex = 1; // Başlangıçta farklı takımlar seçili olsun
+    }
+
+    function startGame() {
+        const p1Key = player1TeamSelect.value;
+        const p2Key = player2TeamSelect.value;
+
+        if (p1Key === p2Key) {
+            alert("Lütfen farklı takımlar seçin!");
+            return;
+        }
+
+        state = {
+            player1: { id: 1, team: TEAMS[p1Key], score: 0 },
+            player2: { id: 2, team: TEAMS[p2Key], score: 0 },
+            currentRound: 1,
+            turn: 'p1_shoots', // p1_shoots, p2_shoots
+            shooter: null,
+            keeper: null,
+            shooterChoice: null,
+            keeperChoice: null,
+            isAnimating: false
+        };
+
+        teamSelectionScreen.classList.add('hidden');
+        gameScreen.classList.remove('hidden');
+        
+        setupRound();
+    }
+
+    function setupRound() {
+        resetPositions();
+        
+        // Rolleri belirle
+        if (state.turn === 'p1_shoots') {
+            state.shooter = state.player1;
+            state.keeper = state.player2;
+        } else {
+            state.shooter = state.player2;
+            state.keeper = state.player1;
+        }
+        
+        // Skor tablosunu güncelle
+        player1ScoreEl.textContent = state.player1.score;
+        player2ScoreEl.textContent = state.player2.score;
+        p1Container.style.backgroundColor = state.player1.team.color;
+        p1Container.style.color = state.player1.team.shorts; // Kontrast için
+        p2Container.style.backgroundColor = state.player2.team.color;
+        p2Container.style.color = state.player2.team.shorts;
+        turnInfoEl.textContent = `${state.currentRound}. TUR`;
+        
+        // Kaleci formasını ayarla
+        keeperJersey.setAttribute('fill', state.keeper.team.color);
+        keeperShorts.setAttribute('fill', state.keeper.team.shorts);
+        
+        // Mesajı ve kontrolleri göster
+        messageEl.textContent = `${state.shooter.team.name} VURUŞ İÇİN HAZIR!`;
+        shooterControls.classList.remove('hidden');
+        keeperControls.classList.add('hidden');
+        toggleControls(false);
+    }
+    
+    function playerSelects(choice) {
+        if (state.isAnimating) return;
+        
+        if (state.shooterChoice === null) {
+            // Şutör seçimini yaptı
+            state.shooterChoice = choice;
+            messageEl.textContent = `${state.keeper.team.name} KURTARIŞ İÇİN HAZIR!`;
+            shooterControls.classList.add('hidden');
+            keeperControls.classList.remove('hidden');
+        } else {
+            // Kaleci seçimini yaptı
+            state.keeperChoice = choice;
+            toggleControls(true); // Tüm butonları kitle
+            revealAndAnimate();
+        }
+    }
+    
+    function revealAndAnimate() {
+        state.isAnimating = true;
+        let shooterPos = POSITIONS[state.shooterChoice];
+        let keeperPos = POSITIONS[state.keeperChoice];
+        
+        // Panenka özel durumu
+        if (state.shooterChoice === 'p') {
+            // Kaleci ya sağa ya sola atlar
+            const randomDive = Math.random() < 0.5 ? 'bl' : 'br';
+            keeperPos = POSITIONS[randomDive];
+            // Panenka'yı kurtarmak için kalecinin de 'p' seçmesi gerekirdi, ama kalecide o seçenek yok.
+            // Bu yüzden panenka, kaleci aşağı atladığında kurtarılabilir bir vuruş haline geliyor.
+            // Daha adil olması için kaleci de rastgele bir alt köşe seçiyor.
+            state.keeperChoice = randomDive;
+        }
+        
+        ball.style.transform = shooterPos.ball;
+        keeperSVG.style.transform = keeperPos.keeper;
+        
+        setTimeout(() => {
+            const isGoal = state.shooterChoice !== state.keeperChoice;
+            if (isGoal) {
+                state.shooter.score++;
+                messageEl.textContent = "GOOLLL!!!";
+                goalNet.classList.add('goal-scored');
+            } else {
+                messageEl.textContent = "KURTARIŞ!";
+            }
+            updateScores();
+            
+            setTimeout(nextTurn, 2000); // Sonucu göster, sonraki tura geç
+        }, 800);
+    }
+    
+    function nextTurn() {
+        if (state.turn === 'p1_shoots') {
+            state.turn = 'p2_shoots';
+            setupRound();
+        } else {
+            state.currentRound++;
+            if (state.currentRound > 5) {
+                endGame();
+            } else {
+                state.turn = 'p1_shoots';
+                setupRound();
+            }
+        }
+        state.shooterChoice = null;
+        state.keeperChoice = null;
+        state.isAnimating = false;
+    }
+    
+    function endGame() {
+        let winnerMessage = "";
+        if (state.player1.score > state.player2.score) {
+            winnerMessage = `${state.player1.team.name} KAZANDI! (${state.player1.score} - ${state.player2.score})`;
+        } else if (state.player2.score > state.player1.score) {
+            winnerMessage = `${state.player2.team.name} KAZANDI! (${state.player2.score} - ${state.player1.score})`;
+        } else {
+            winnerMessage = `MAÇ BERABERE! (${state.player1.score} - ${state.player2.score})`;
+        }
+        messageEl.textContent = winnerMessage;
+        
+        setTimeout(() => {
+            gameScreen.classList.add('hidden');
+            teamSelectionScreen.classList.remove('hidden');
+        }, 4000); // 4 saniye sonra takım seçimine dön
+    }
+
+    function resetPositions() {
+        ball.style.transform = 'translate(0, 0)';
+        keeperSVG.style.transform = 'translate(0, 0)';
+        goalNet.classList.remove('goal-scored');
+    }
+    
+    function updateScores() {
+        player1ScoreEl.textContent = state.player1.score;
+        player2ScoreEl.textContent = state.player2.score;
+    }
+
+    function toggleControls(disabled) {
+        document.querySelectorAll('.control-btn').forEach(btn => btn.disabled = disabled);
+    }
+    
+    // Oyunu Başlat
+    initializeTeamSelection();
+</script>
+
+</body>
+</html>

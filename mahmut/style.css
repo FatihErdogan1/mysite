@@ -1,0 +1,305 @@
+/* GENEL STİLLER VE RENK PALETİ */
+:root {
+    --bg-dark: #141414;        /* Ana Arka Plan (Koyu) */
+    --bg-light: #F5F5F5;       /* Vurgu Arka Plan (Açık Nötr) */
+    --text-primary: #FFFFFF;   /* Ana Metin (Beyaz) */
+    --text-secondary: #AAAAAA; /* İkincil Metin (Açık Gri) */
+    --accent-color: #FF7043;   /* Aksiyon Rengi (Canlı ve Sıcak) */
+    --font-family: 'Inter', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    line-height: 1.6;
+    scroll-behavior: smooth; /* Modern HCI: Yumuşak Kaydırma */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2 {
+    color: var(--text-primary);
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2.5em;
+    text-align: center;
+    padding-top: 40px;
+    margin-bottom: 40px;
+}
+
+/* NAVİGASYON (HEADER) */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(20, 20, 20, 0.95); /* Yarı saydamlık */
+    padding: 15px 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: var(--text-primary);
+    font-size: 1.5em;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.navbar a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-left: 25px;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: var(--accent-color); /* HCI: Vurgu rengi ile hover efekti */
+}
+
+.action-btn {
+    background-color: var(--accent-color);
+    color: var(--bg-dark) !important;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.action-btn:hover {
+    opacity: 0.9;
+}
+
+
+/* HERO ALANI */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* Hero fotoğrafı buraya background-image olarak eklenecek */
+    background: url('img/hero-placeholder.jpg') no-repeat center center/cover; 
+    position: relative;
+    padding-top: 80px; /* Sabit menü için boşluk */
+}
+
+.hero-section::before { /* Koyu overlay ile metin okunabilirliğini artırma */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); 
+}
+
+.hero-content {
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: 4em;
+    margin-bottom: 5px;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: var(--text-secondary);
+}
+
+.cta-button {
+    background-color: var(--accent-color);
+    color: var(--bg-dark);
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: 700;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #FF8A65; /* Aksiyon renginin biraz açığı */
+}
+
+/* GALERİ ALANI (Görsel Odak) */
+.gallery-section {
+    padding: 80px 0;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive Grid */
+    gap: 15px;
+}
+
+.gallery-item {
+    overflow: hidden;
+    cursor: pointer; /* HCI: Tıklanabilir olduğunu belli eder */
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery-item:hover {
+    transform: scale(1.02); /* HCI: Hafif büyüme ile etkileşim */
+    opacity: 0.85;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* HAKKINDA ALANI */
+.about-section {
+    background-color: var(--bg-light); /* Koyu arkaplanı bölen açık nötr */
+    color: #333; /* Açık arkaplan üzerinde koyu metin */
+    padding: 80px 0;
+    text-align: center;
+}
+
+.about-section h2 {
+    color: var(--bg-dark); 
+}
+
+.bio-text {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+/* İLETİŞİM ALANI */
+.contact-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 30px auto;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 15px;
+    border: 1px solid var(--text-secondary);
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    border-radius: 5px;
+}
+
+.social-links a {
+    color: var(--accent-color);
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1.1em;
+}
+
+/* FOOTER (Altbilgi) */
+footer {
+    background-color: #000;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.secondary-text {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+/* LIGHTBOX STİLİ (Modal/Tam Ekran Görsel) */
+.lightbox {
+    display: none; 
+    position: fixed;
+    z-index: 2000;
+    padding-top: 60px; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.95);
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    width: 90%;
+    max-width: 1000px;
+    max-height: 85%;
+    object-fit: contain;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+.lightbox-caption {
+    margin: 15px auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 10px 0;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+@keyframes zoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+/* Medya Sorguları (HCI: Mobil Uyumluluk) */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+    }
+    .navbar nav {
+        margin-top: 10px;
+    }
+    .navbar a {
+        margin: 0 10px;
+        font-size: 0.9em;
+    }
+    .hero-content h1 {
+        font-size: 3em;
+    }
+    .photo-grid {
+        grid-template-columns: 1fr; /* Mobil cihazlarda tek sütun */
+    }
+}

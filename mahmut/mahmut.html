@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahmut Emre Furat - Fotoğraf Galerisi</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="#hero" class="logo">M.E. FURAT</a>
+            <nav>
+                <a href="#gallery">GALERİ</a>
+                <a href="#about">HAKKINDA</a>
+                <a href="#contact" class="action-btn">İLETİŞİM</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <h1>MAHMUT EMRE FURAT</h1>
+            <p>Vizyoner Fotoğraf Sanatçısı &amp; Görsel Hikaye Anlatıcısı</p>
+            <a href="#gallery" class="cta-button">Galeriye Göz At</a>
+        </div>
+        </section>
+
+    <section id="gallery" class="gallery-section container">
+        <h2>Seçilmiş Eserler</h2>
+        <div class="photo-grid">
+            <div class="gallery-item" onclick="openLightbox('img/photo1.jpg', 'Fotoğraf Başlığı 1')">
+                <img src="Adalar.jpg" alt="Fotoğraf 1" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox('img/photo2.jpg', 'Fotoğraf Başlığı 2')">
+                <img src="Adalar2.jpg" alt="Fotoğraf 2" loading="lazy">
+            </div>
+            <div class="gallery-item" onclick="openLightbox('img/photo3.jpg', 'Fotoğraf Başlığı 3')">
+                <img src="Bodrum3.jpg" alt="Fotoğraf 3" loading="lazy">
+            </div>
+            </div>
+    </section>
+
+    <section id="about" class="about-section secondary-bg">
+        <div class="container">
+            <h2>Hakkında</h2>
+            <p class="bio-text">
+                Mahmut Emre Furat, İstanbul merkezli bir fotoğraf sanatçısıdır. Eserlerinde genellikle insan ve doğa arasındaki ilişkiye odaklanır. Fotoğrafları, anlık duygusal anları yakalama ve izleyicisine derin bir hikaye sunma arayışının bir sonucudur. Çalışmaları, ulusal ve uluslararası sergilerde yer almıştır...
+            </p>
+            </div>
+    </section>
+
+    <section id="contact" class="contact-section container">
+        <h2>İletişim</h2>
+        <p>Projeleriniz, işbirlikleri ve sorularınız için iletişime geçebilirsiniz.</p>
+        <form class="contact-form">
+            <input type="text" placeholder="Adınız Soyadınız">
+            <input type="email" placeholder="E-posta Adresiniz">
+            <textarea placeholder="Mesajınız"></textarea>
+            <button type="submit" class="action-btn">Gönder</button>
+        </form>
+        <div class="social-links">
+            <a href="#" target="_blank">Instagram</a> | <a href="#" target="_blank">Flickr</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="secondary-text">&copy; 2025 Mahmut Emre Furat. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightboxImage">
+        <div id="lightboxCaption" class="lightbox-caption"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
