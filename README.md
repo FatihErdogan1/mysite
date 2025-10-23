@@ -44,6 +44,6 @@ GSAP (GreenSock Animation Platform): İleri seviye animasyonlar için.
 
 Benimle iletişime geçmekten veya bir merhaba demekten çekinmeyin!
 
-LinkedIn: @fatih-erdoğan
+LinkedIn:https://www.linkedin.com/in/fatih-erdo%C4%9Fan-381b86311/
 
-E-posta: fatih.erdogan@mail.com
+E-posta: fyf.fatih6574@mail.com
