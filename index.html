@@ -1,262 +1,296 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fatih Erdoğan | Portföy</title>
-    
-    <!-- Google Fonts -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome (Ikonlar) -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-    
-    <!-- Stil Dosyası -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <div class="scroll-progress-bar"></div>
+
     <header class="header">
         <nav class="container">
-            <a href="#home" class="nav-logo">F.E.</a>
+            <a href="#home" class="nav-logo">
+                <span class="logo-accent">F</span>E
+            </a>
             <ul class="nav-links">
-                <!-- Navigasyon menüsü güncellendi -->
                 <li><a href="#home">Ana Sayfa</a></li>
                 <li><a href="#about">Hakkımda</a></li>
-                <li><a href="#education">Eğitim</a></li>
-                <li><a href="#experience">Deneyim</a></li> <!-- YENİ EKLENDİ -->
+                <li><a href="#education">Yolculuk</a></li>
                 <li><a href="#skills">Yetenekler</a></li>
-               <!--  <li><a href="#portfolio">Portföy</a></li> YENİ EKLENDİ -->
                 <li><a href="#contact">İletişim</a></li>
             </ul>
-
-            <!-- Tema Değiştirme Butonu -->
-            <div class="theme-switch-container">
-                <label class="theme-switch" for="theme-toggle">
-                    <input type="checkbox" id="theme-toggle" />
-                    <div class="slider">
-                        <div class="icon-wrapper">
-                            <i class="fas fa-sun"></i>
-                            <i class="fas fa-moon"></i>
-                        </div>
-                    </div>
-                </label>
-            </div>
-            <!-- Mobil Menü Butonu -->
-            <div class="hamburger">
-                <i class="fas fa-bars"></i>
+            <div class="nav-actions">
+                <button class="theme-btn" id="theme-toggle" aria-label="Tema değiştir">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="hamburger" aria-label="Menüyü aç">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </nav>
     </header>
 
     <main>
 
-        <!-- Ana Sayfa (Hero) -->
+        <!-- HERO -->
         <section id="home" class="hero">
-            <div class="container hero-content">
-                <p class="hero-intro">Merhaba, ben</p>
-                <h1 class="hero-title">Fatih Erdoğan.</h1>
-                <h2 class="hero-subtitle">
-                    <span class="typewriter"></span>
-                </h2>
-                <p class="hero-description">
-                    Teknolojiye ve yenilikçi çözümler üretmeye tutkulu, Işık Üniversitesi Yönetim Bilişim Sistemleri 3. sınıf öğrencisiyim.
-                </p>
-                <div class="hero-socials">
-                    <a href="https://github.com/FatihErdogan1" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/fatih-erdo%C4%9Fan-381b86311/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.instagram.com/_fatih.erdgn_/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <!-- YENİ EKLENDİ: WhatsApp İkonu -->
-                    <!-- NOT: "90555XXXXXXX" kısmını kendi numaranla değiştir (Başında 90 olmalı, boşluksuz) -->
-                    <a href="https://wa.me/905413854028" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- Hakkımda -->
-        <section id="about" class="about container section-padding">
-            <h2 class="section-title"><span>01.</span> Hakkımda</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        Merhaba! Adım Fatih Erdoğan, Işık Üniversitesi'nde Yönetim Bilişim Sistemleri bölümünde 3. sınıf öğrencisiyim. Algoritmik düşünme ve problem çözme yeteneklerimi, yazılım geliştirme alanında derinleştirerek kariyerimi şekillendiriyorum.
+            <div class="hero-mesh"></div>
+            <div class="hero-dots"></div>
+            <div class="container hero-inner">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="badge-dot"></span>
+                        Fırsatlara Açığım
+                    </div>
+                    <p class="hero-greeting">Merhaba, ben</p>
+                    <h1 class="hero-name">Fatih <span class="gradient-text">Erdoğan.</span></h1>
+                    <h2 class="hero-role">
+                        <span class="typewriter"></span><span class="typewriter-cursor">|</span>
+                    </h2>
+                    <p class="hero-bio">
+                        Teknolojiye ve yenilikçi çözümler üretmeye tutkulu, Işık Üniversitesi
+                        Yönetim Bilişim Sistemleri 3. sınıf öğrencisiyim.
                     </p>
-                    <p>
-                        Özellikle mobil uygulama geliştirme ve backend teknolojileri üzerine yoğunlaşmış durumdayım. C# ve Kotlin dillerinde orta seviyede bilgi birikimine sahibim ve bu teknolojileri kullanarak kullanıcı odaklı, verimli ve ölçeklenebilir uygulamalar geliştirmeyi hedefliyorum.
-                    </p>
-                    <p>
-                        Akademik hayatım boyunca öğrendiğim teorik bilgileri pratik projelere dönüştürmeye ve sürekli olarak yeni teknolojileri öğrenmeye büyük bir heves duyuyorum.
-                    </p>
-                    <a href="fatihcv.pdf" class="btn" download>CV'mi İndir</a>
+                    <div class="hero-cta">
+                        <a href="#contact" class="btn btn-primary">İletişime Geç</a>
+                        <a href="fatihcv.pdf" class="btn btn-ghost" download>
+                            <i class="fas fa-download"></i> CV İndir
+                        </a>
+                    </div>
+                    <div class="hero-socials">
+                        <a href="https://github.com/FatihErdogan1" target="_blank" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/fatih-erdo%C4%9Fan-381b86311/" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.instagram.com/_fatih.erdgn_/" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/905413854028" target="_blank" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="about-image">
-                    <!-- NOT: "fotografim.jpg" dosyasının ana klasörde olduğundan emin ol -->
-                    <img src="fotografim.jpg" alt="Fatih Erdoğan">
+
+                <div class="hero-aside">
+                    <div class="stat-card">
+                        <span class="stat-num">3.75</span>
+                        <span class="stat-lbl">GPA / 4.00</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-num">7+</span>
+                        <span class="stat-lbl">Ay Deneyim</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-num">8+</span>
+                        <span class="stat-lbl">Teknoloji</span>
+                    </div>
                 </div>
             </div>
+
+            <a href="#about" class="scroll-hint" aria-label="Aşağı kaydır">
+                <span>Keşfet</span>
+                <i class="fas fa-chevron-down"></i>
+            </a>
         </section>
 
-        <!-- Eğitim -->
-        <section id="education" class="education container section-padding">
-            <h2 class="section-title"><span>02.</span> Eğitim Hayatım</h2>
-            <div class="education-grid">
-                <!-- Üniversite Kartı -->
-                <div class="education-card">
-                    <div class="education-logo">
-                        <img src="unilogo.png" alt="Işık Üniversitesi Logosu">
-                    </div>
-                    <div class="education-details">
-                        <h3>Işık Üniversitesi</h3>
-                        <p class="education-field">Yönetim Bilişim Sistemleri (YBS)</p>
-                        <p class="education-date">2022 - Halen Devam Ediyor</p>
-                        <p class="education-gpa">Genel Not Ortalaması: 3.75 / 4.00</p>
-                    </div>
+        <!-- HAKKIMDA -->
+        <section id="about" class="about section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">01 — Hakkımda</span>
+                    <h2 class="section-heading">Beni Tanıyın</h2>
                 </div>
-                <!-- Lise Kartı -->
-                <div class="education-card">
-                    <div class="education-logo">
-                        <img src="fsmallogo.jpg" alt="Fatih Sultan Mehmet A.L. Logosu">
+                <div class="about-grid">
+                    <div class="about-photo-wrap">
+                        <div class="photo-glow"></div>
+                        <div class="photo-frame">
+                            <img src="fotografim.jpg" alt="Fatih Erdoğan fotoğrafı">
+                        </div>
                     </div>
-                    <div class="education-details">
-                        <h3>Bartın Fatih Sultan Mehmet Anadolu Lisesi</h3>
-              
-                        <p class="education-date">2017 - 2021</p>
-                        <p class="education-gpa">Mezun</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- YENİ BÖLÜM: DENEYİM -->
-        <section id="experience" class="experience container section-padding">
-            <h2 class="section-title"><span>03.</span> Deneyimlerim</h2>
-            <div class="education-grid"> <!-- Eğitim bölümüyle aynı stili kullanabiliriz -->
-                <!-- TÜBİTAK Deneyim Kartı -->
-                <div class="education-card"> <!-- Stil yeniden kullanıldı -->
-                    <div class="education-logo">
-                         <!-- TÜBİTAK logosu veya proje logosu için yer tutucu -->
-                        <img src="tubitak.png" alt="TÜBİTAK Projesi Logosu">
-                    </div>
-                    <div class="education-details">
-                        <h3>Araştırma Bursiyeri</h3>
-                        <p class="education-field">TÜBİTAK Projesi (Işık Üniversitesi)</p>
-                        <p class="education-date">2023-2024 (7 ay)</p>
-                        <p class="education-gpa">"Akıllı Bal Değer Zincirleri" projesinde Kotlin ile mobil prototip geliştirme.</p>
-                    </div>
-                </div>
-                
-                <!-- Başka bir deneyim kartı (gelecek için yer tutucu) 
-                 
-                <div class="education-card">
-                    <div class="education-logo">
-                        <img src="https://placehold.co/100x100/4a4a4a/FFFFFF?text=... " alt="Gelecek Deneyim">
-                    </div>
-                    <div class="education-details">
-                        <h3>Gelecekteki Staj/İş</h3>
-                        <p class="education-field">Pozisyon</p>
-                        <p class="education-date">Tarih</p>
-                        <p class="education-gpa">Açıklama</p>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-
-
-        <!-- Yetenekler -->
-        <section id="skills" class="skills container section-padding">
-            <h2 class="section-title"><span>04.</span> Yeteneklerim</h2> <!-- Numara güncellendi -->
-            <div class="skills-grid">
-                <div class="skill-card"><i class="fa-solid fa-code"></i><h3>C#</h3></div>
-                <div class="skill-card"><i class="fa-brands fa-kickstarter-k"></i><h3>Kotlin</h3></div>
-                <div class="skill-card"><i class="fa-solid fa-mobile-screen-button"></i><h3>Android</h3></div>
-                <div class="skill-card"><i class="fa-solid fa-database"></i><h3>SQL</h3></div>
-                <div class="skill-card"><i class="fa-brands fa-html5"></i><h3>HTML & CSS</h3></div>
-                <div class="skill-card"><i class="fa-brands fa-js"></i><h3>JavaScript</h3></div>
-                <div class="skill-card"><i class="fa-brands fa-git-alt"></i><h3>Git</h3></div>
-                <div class="skill-card"><i class="fa-solid fa-laptop-code"></i><h3>OOP</h3></div>
-            </div>
-        </section>
-
-
-        <!-- Portföy
-        <section id="portfolio" class="portfolio container section-padding">
-            <h2 class="section-title"><span>05.</span> Projelerim</h2>
-            <div class="portfolio-grid">
-                
-               
-    
-              
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://placehold.co/600x400/112240/64ffda?text=Proje+1" alt="Proje 1">
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Gelecek Proje Adı</h3>
-                        <p class="project-description">
-                            Buraya C# veya Kotlin kullanarak yapacağınız harika bir projenin açıklaması gelecek. Örneğin bir masaüstü uygulaması, bir oyun veya backend servisi olabilir.
+                    <div class="about-body">
+                        <p>
+                            Merhaba! Adım <strong>Fatih Erdoğan</strong>, Işık Üniversitesi'nde Yönetim Bilişim Sistemleri bölümünde 3. sınıf öğrencisiyim. Algoritmik düşünme ve problem çözme yeteneklerimi yazılım geliştirme alanında derinleştirerek kariyerimi şekillendiriyorum.
                         </p>
-                        <a href="#" target="_blank">Proje Detayları (Yakında)</a>
-                        <ul class="project-tags">
-                            <li>C#</li>
-                            <li>.NET</li>
-                            <li>SQL</li>
-                        </ul>
-                    </div>
-                </div>
-
-              
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://placehold.co/600x400/112240/64ffda?text=Proje+2" alt="Proje 2">
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Diğer Proje Adı</h3>
-                        <p class="project-description">
-                            Bu da başka bir projeniz için yer tutucu. Belki bir Android uygulaması veya bu portfolyo sitesinin kendisi olabilir!
+                        <p>
+                            Özellikle <strong>mobil uygulama geliştirme</strong> ve <strong>backend teknolojileri</strong> üzerine yoğunlaşmış durumdayım. C# ve Kotlin dillerinde orta seviyede bilgi birikimine sahibim; kullanıcı odaklı, verimli ve ölçeklenebilir uygulamalar geliştirmeyi hedefliyorum.
                         </p>
-                        <a href="#" target="_blank">Proje Detayları (Yakında)</a>
-                        <ul class="project-tags">
-                            <li>Kotlin</li>
-                            <li>Android</li>
-                            <li>XML/Jetpack</li>
-                        </ul>
+                        <p>
+                            Akademik hayatım boyunca öğrendiğim teorik bilgileri pratik projelere dönüştürmeye ve sürekli yeni teknolojiler öğrenmeye büyük bir heves duyuyorum.
+                        </p>
+                        <a href="fatihcv.pdf" class="btn btn-primary" download>
+                            <i class="fas fa-file-download"></i> CV'mi İndir
+                        </a>
                     </div>
                 </div>
-           
-            </div>
-        </section>  -->
-
-
-        <!-- İletişim -->
-        <section id="contact" class="contact container section-padding">
-            <h2 class="section-title"><span>06.</span> İletişim</h2> <!-- Numara güncellendi -->
-            <div class="contact-content">
-                <p>Yeni fırsatlar ve projeler için her zaman iletişimde olmaktan mutluluk duyarım. Benimle tanışmak veya bir soru sormak isterseniz, lütfen aşağıdaki butonu kullanın.</p>
-                <a href="mailto:fatih.erdogan@mail.com" class="btn">Merhaba De!</a>
             </div>
         </section>
+
+        <!-- EĞİTİM & DENEYİM -->
+        <section id="education" class="journey section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">02 — Eğitim & Deneyim</span>
+                    <h2 class="section-heading">Yolculuğum</h2>
+                </div>
+                <div class="timeline">
+
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <img src="tubitak.png" alt="TÜBİTAK logosu">
+                        </div>
+                        <div class="timeline-card">
+                            <div class="timeline-meta">
+                                <span class="tl-period">2023 – 2024</span>
+                                <span class="tl-badge">Deneyim · 7 ay</span>
+                            </div>
+                            <h3>Araştırma Bursiyeri</h3>
+                            <p class="tl-org">TÜBİTAK Projesi — Işık Üniversitesi</p>
+                            <p class="tl-desc">"Akıllı Bal Değer Zincirleri" projesinde Kotlin ile Android mobil prototip geliştirme.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <img src="unilogo.png" alt="Işık Üniversitesi logosu">
+                        </div>
+                        <div class="timeline-card">
+                            <div class="timeline-meta">
+                                <span class="tl-period">2022 – Halen</span>
+                                <span class="tl-badge tl-active">Devam Ediyor</span>
+                            </div>
+                            <h3>Işık Üniversitesi</h3>
+                            <p class="tl-org">Yönetim Bilişim Sistemleri (YBS)</p>
+                            <span class="gpa-pill">GPA: 3.75 / 4.00</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <img src="fsmallogo.jpg" alt="FSMAL logosu">
+                        </div>
+                        <div class="timeline-card">
+                            <div class="timeline-meta">
+                                <span class="tl-period">2017 – 2021</span>
+                                <span class="tl-badge">Mezun</span>
+                            </div>
+                            <h3>Bartın Fatih Sultan Mehmet Anadolu Lisesi</h3>
+                            <p class="tl-org">Anadolu Lisesi</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- YETENEKLERİM -->
+        <section id="skills" class="skills section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">03 — Yetenekler</span>
+                    <h2 class="section-heading">Teknoloji Yığınım</h2>
+                </div>
+
+                <div class="skills-layout">
+                    <div class="skills-featured">
+                        <div class="skill-big">
+                            <i class="fa-solid fa-code"></i>
+                            <div>
+                                <h3>C#</h3>
+                                <p>Backend & Masaüstü</p>
+                            </div>
+                        </div>
+                        <div class="skill-big">
+                            <i class="fa-brands fa-android"></i>
+                            <div>
+                                <h3>Kotlin</h3>
+                                <p>Android Geliştirme</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skills-grid">
+                        <div class="skill-tile">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                            <span>Android</span>
+                        </div>
+                        <div class="skill-tile">
+                            <i class="fa-solid fa-database"></i>
+                            <span>SQL</span>
+                        </div>
+                        <div class="skill-tile">
+                            <i class="fa-brands fa-html5"></i>
+                            <span>HTML & CSS</span>
+                        </div>
+                        <div class="skill-tile">
+                            <i class="fa-brands fa-js"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-tile">
+                            <i class="fa-brands fa-git-alt"></i>
+                            <span>Git</span>
+                        </div>
+                        <div class="skill-tile">
+                            <i class="fa-solid fa-layer-group"></i>
+                            <span>OOP</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- İLETİŞİM -->
+        <section id="contact" class="contact section-padding">
+            <div class="container">
+                <div class="contact-box">
+                    <span class="section-tag">04 — İletişim</span>
+                    <h2 class="contact-heading">Birlikte <span class="gradient-text">Çalışalım.</span></h2>
+                    <p class="contact-text">
+                        Yeni fırsatlar ve projeler için her zaman iletişimde olmaktan mutluluk duyarım.
+                        Benimle tanışmak veya bir soru sormak isterseniz, aşağıdaki butonu kullanın.
+                    </p>
+                    <a href="mailto:fatih.erdogan@mail.com" class="btn btn-primary btn-lg">
+                        <i class="fas fa-envelope"></i> Merhaba De!
+                    </a>
+                    <div class="contact-socials">
+                        <a href="https://github.com/FatihErdogan1" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/fatih-erdo%C4%9Fan-381b86311/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/_fatih.erdgn_/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/905413854028" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
-    
+
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Fatih Erdoğan. Tüm hakları saklıdır.</p>
+            <p>Tasarım & Geliştirme — <span class="gradient-text">Fatih Erdoğan</span></p>
+            <p class="footer-sub">&copy; 2025 · Tüm hakları saklıdır.</p>
         </div>
     </footer>
 
-    <!-- YENİ EKLENDİ: BAŞA DÖN BUTONU -->
-    <a href="#home" class="back-to-top" aria-label="Başa Dön">
+    <a href="#home" class="back-to-top" aria-label="Başa dön">
         <i class="fas fa-arrow-up"></i>
     </a>
 
-    <!-- YENİ EKLENDİ: GSAP (İleri Seviye Animasyon) Kütüphanesi -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-    <!-- Ana JavaScript Dosyası -->
     <script src="script.js"></script>
 </body>
 </html>
-
