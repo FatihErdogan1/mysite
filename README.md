@@ -1,6 +1,6 @@
 Fatih Erdoğan - Kişisel Portföy Websitesi
 
-Merhaba! 👋 Bu proje, benim kişisel portföy sitemin kaynak kodlarını içermektedir. Işık Üniversitesi Yönetim Bilişim Sistemleri 3. sınıf öğrencisi olarak yeteneklerimi, eğitim hayatımı ve deneyimlerimi sergilemek amacıyla sıfırdan HTML, CSS ve JavaScript kullanarak geliştirdim.
+Merhaba! 👋 Bu proje, benim kişisel portföy sitemin kaynak kodlarını içermektedir. Işık Üniversitesi Yönetim Bilişim Sistemleri 4. sınıf öğrencisi olarak yeteneklerimi, eğitim hayatımı ve deneyimlerimi sergilemek amacıyla sıfırdan HTML, CSS ve JavaScript kullanarak geliştirdim.
 
 🚀 Live Demo'ya Göz Atın!
 
