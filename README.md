@@ -1,49 +1,51 @@
-Fatih Erdoğan - Kişisel Portföy Websitesi
+# Fatih Erdoğan — Personal Portfolio
 
-Merhaba! 👋 Bu proje, benim kişisel portföy sitemin kaynak kodlarını içermektedir. Işık Üniversitesi Yönetim Bilişim Sistemleri 4. sınıf öğrencisi olarak yeteneklerimi, eğitim hayatımı ve deneyimlerimi sergilemek amacıyla sıfırdan HTML, CSS ve JavaScript kullanarak geliştirdim.
+Source code of my personal portfolio website, live at **[fatiherdogan.live](https://fatiherdogan.live)**.
+A single-page site (Turkish content) built from scratch with plain HTML, CSS and JavaScript, using GSAP for animations.
 
-🚀 Live Demo'ya Göz Atın!
+## Features
 
-🎨 Ön İzleme
+- Single-page layout: hero, about, education & experience timeline, skills and contact sections
+- Dark / light theme toggle — dark by default, the choice is remembered in `localStorage`
+- Entrance and scroll-reveal animations with GSAP + ScrollTrigger
+- Typewriter effect in the hero section
+- Scroll progress bar, auto-hiding header and scroll-spy navigation highlighting
+- "Back to top" button with smooth scrolling
+- Responsive design with a mobile hamburger menu (breakpoints at 992 / 768 / 480 px)
+- Theme colors, radii and fonts defined as CSS custom properties
 
-Buraya sitenin masaüstü ve mobil görünümünü gösteren bir ekran görüntüsü eklemen çok profesyonel duracaktır.
+## Tech Stack
 
-(Ekran görüntüsünü projeye ekledikten sonra [SITENIZIN_EKRAN_GORUNTUSU.png] kısmını dosya adıyla değiştirin.)
+- HTML5, CSS3 (custom properties, media queries)
+- Vanilla JavaScript (ES6+)
+- [GSAP 3.12](https://gsap.com/) + ScrollTrigger (loaded from cdnjs)
+- Font Awesome 6, Google Fonts (Space Grotesk, Inter)
 
-✨ Özellikler
+## Project Structure
 
-Bu site, modern web teknolojileri ve HCI (İnsan-Bilgisayar Etkileşimi) prensipleri düşünülerek tasarlanmıştır:
+```
+index.html      # page markup (all sections)
+style.css       # styles, dark/light theme variables, responsive rules
+script.js       # theme toggle, mobile menu, typewriter, scroll effects, GSAP animations
+*.jpg / *.png   # profile photo and logos
+fatihcv.pdf     # CV
+```
 
-Çift Tema: Tek tuşla değiştirilebilen, animasyonlu Açık/Koyu Mod. (Kullanıcının sistem tercihini otomatik algılar)
+## Running Locally
 
-Gelişmiş Animasyonlar: Sayfa açılışı ve kaydırma hareketleri için GSAP (GreenSock) ve ScrollTrigger kütüphaneleri ile sinematik animasyonlar.
+There is no build step. Open `index.html` in a browser, or serve the folder with any static file server, for example:
 
-Tamamen Duyarlı Tasarım: Masaüstü, tablet ve mobil cihazlarda kusursuz görünüm.
+```bash
+python -m http.server 8000
+# then visit http://localhost:8000
+```
 
-Scroll Spy: Kullanıcı sayfayı kaydırdıkça, navigasyon menüsünde o an hangi bölümde olduğunu aktif olarak vurgular.
+## Contact
 
-Dinamik Daktilo Efekti: Ana sayfada dikkat çekici bir daktilo animasyonu.
+- Website: [fatiherdogan.live](https://fatiherdogan.live)
+- LinkedIn: [Fatih Erdoğan](https://www.linkedin.com/in/fatih-erdo%C4%9Fan-381b86311/)
+- GitHub: [@FatihErdogan1](https://github.com/FatihErdogan1)
 
-"Başa Dön" Butonu: Sayfanın alt kısımlarında beliren ve yumuşak bir kaydırma ile başa dönen kullanıcı dostu bir buton.
+---
 
-Saf JavaScript: Tüm interaktif özellikler harici bir kütüphane (GSAP hariç) olmadan, saf JavaScript ile yazılmıştır.
-
-🛠️ Kullanılan Teknolojiler
-
-HTML5
-
-CSS3 (Flexbox, Grid, Custom Variables)
-
-JavaScript (ES6+)
-
-GSAP (GreenSock Animation Platform): İleri seviye animasyonlar için.
-
-
-
-📬 İletişim
-
-Benimle iletişime geçmekten veya bir merhaba demekten çekinmeyin!
-
-LinkedIn:https://www.linkedin.com/in/fatih-erdo%C4%9Fan-381b86311/
-
-E-posta: fyf.fatih6574@mail.com
+**Author:** Fatih Erdoğan
