@@ -123,7 +123,7 @@
 
             'tutor.tag': 'On the side — Tutoring',
             'tutor.title': 'I tutor middle and high school students.',
-            'tutor.text': 'Maths, Turkish, social studies and TYT exam prep — in person or online (lessons in Turkish).',
+            'tutor.text': 'All middle-school subjects, plus high-school maths, Turkish, social studies and TYT exam prep — in person or online (lessons in Turkish).',
             'tutor.cta': 'Tutoring page',
 
             'contact.tag': '05 — Contact',
