@@ -37,6 +37,10 @@
             'a11y.email': 'E-mail',
             'a11y.scroll': 'Scroll down',
             'a11y.top': 'Back to top',
+            'a11y.skip': 'Skip to content',
+            'a11y.nav': 'Main menu',
+            'nav.tutor': 'Tutoring',
+            'nav.tutorLong': 'Private tutoring — middle &amp; high school',
 
             'hero.badge': 'Open to opportunities',
             'hero.greeting': "Hi, I'm",
@@ -44,6 +48,7 @@
             'hero.cta': 'Get in touch',
             'hero.statRank': 'Dept. Rank',
             'hero.statProjects': 'Projects',
+            'hero.statIntern': 'Latest role',
             'hero.explore': 'Explore',
             'cv.download': 'Download CV',
 
@@ -52,6 +57,11 @@
             'about.photoAlt': 'Photo of Fatih Erdoğan',
             'about.p1': "Hi! I'm <strong>Fatih Erdoğan</strong>, a 4th-year Management Information Systems student at Işık University on a full scholarship, ranked <strong>#1</strong> in my department (GPA: 3.77/4.00, expected graduation: 2027).",
             'about.p2': 'In summer 2026 I interned as a software developer at <strong>Tahsilist</strong>, a fintech SaaS company, working on their production collections platform with React &amp; Node.js. On the <strong>full-stack</strong> side I build REST APIs with .NET/C# (ASP.NET Core), Java &amp; Spring Boot and Node.js, modern front ends with React &amp; TypeScript, and <strong>Android</strong> apps with Kotlin. Fintech is the field I am most drawn to.',
+            'about.chip': 'MIS · Işık University',
+            'about.f1': 'Full scholarship',
+            'about.f2': 'Fintech internship — Tahsilist',
+            'about.f3': 'TÜBİTAK project',
+            'about.f4': 'HesAPP in production',
             'about.p3': 'I also worked on mobile UI prototyping in a TÜBİTAK-funded research project, and HesAPP, the POS system I built, is running in production at a real café. I enjoy turning theory into practical products that solve real problems.',
 
             'journey.tag': '02 — Education & Experience',
@@ -98,6 +108,7 @@
             'projects.heading': "What I've Built",
             'projects.live': 'Live',
             'projects.all': 'All projects',
+            'projects.hint': 'Keep scrolling →',
             'projects.hesapp.role': 'Restaurant &amp; Café POS System · In Production',
             'projects.hesapp.desc': 'A POS system running in production at a real café: table orders from tablets, split payments, customer accounts, Z-reports, ESC/POS thermal printing, real-time sync and a customer menu kiosk. The backend is covered by 208 tests. The source code is private; the GitHub repo is a showcase.',
             'projects.envanter.role': 'Full-Stack Inventory &amp; Asset Management · Team Project',
@@ -108,6 +119,11 @@
             'projects.clubchains.desc': 'A command-line tool for university club management — members, voting, events and finances — with token minting on the Stellar testnet via Soroban.',
             'projects.honey.role': 'TÜBİTAK 123N918 — UI/UX Design &amp; Mobile Prototyping',
             'projects.honey.desc': 'Built high-fidelity mobile UI prototypes that served as technical evidence in international TÜBİTAK project reports. Designed user-friendly screens that visualise honey traceability data (hive details, lab test results, etc.) for beekeepers and consumers, and created flow diagrams to streamline UX and navigation.',
+
+            'tutor.tag': 'On the side — Tutoring',
+            'tutor.title': 'I tutor middle and high school students.',
+            'tutor.text': 'Maths, Science, Turkish, Social Studies and Coding — in person or online (lessons in Turkish).',
+            'tutor.cta': 'Tutoring page',
 
             'contact.tag': '05 — Contact',
             'contact.heading': 'Let\'s <span class="gradient-text">Work Together.</span>',
@@ -182,6 +198,7 @@
             btn.classList.toggle('active', on);
             btn.setAttribute('aria-pressed', on ? 'true' : 'false');
         });
+        document.documentElement.setAttribute('data-lang', lang);
     }
 
     function urlLang() {
@@ -217,6 +234,9 @@
         captureDefaults();
         var initial = urlLang() || savedLang() || 'tr';
         if (initial !== 'tr') apply(initial);
+        else document.documentElement.setAttribute('data-lang', 'tr');
+        // The <head> script hides the page while a non-default language is applied.
+        document.documentElement.classList.remove('lang-pending');
 
         document.querySelectorAll('.lang-btn').forEach(function (btn) {
             btn.addEventListener('click', function () {

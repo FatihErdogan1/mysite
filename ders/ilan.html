@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Özel Ders İlanı — Fatih Erdoğan (A4)</title>
+    <meta name="robots" content="noindex">
+    <style>
+        @font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 300 800; src: url('../assets/fonts/fraunces-latin.woff2') format('woff2'); unicode-range: U+0020-007E, U+00A0-00FF, U+0131, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2122; }
+        @font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 300 800; src: url('../assets/fonts/fraunces-tr.woff2') format('woff2'); unicode-range: U+011E-011F, U+0130, U+015E-015F; }
+        @font-face { font-family: 'Fraunces'; font-style: italic; font-weight: 300 800; src: url('../assets/fonts/fraunces-italic-latin.woff2') format('woff2'); unicode-range: U+0020-007E, U+00A0-00FF, U+0131, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2122; }
+        @font-face { font-family: 'Fraunces'; font-style: italic; font-weight: 300 800; src: url('../assets/fonts/fraunces-italic-tr.woff2') format('woff2'); unicode-range: U+011E-011F, U+0130, U+015E-015F; }
+        @font-face { font-family: 'Manrope'; font-weight: 200 800; src: url('../assets/fonts/manrope-latin.woff2') format('woff2'); unicode-range: U+0020-007E, U+00A0-00FF, U+0131, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2122; }
+        @font-face { font-family: 'Manrope'; font-weight: 200 800; src: url('../assets/fonts/manrope-tr.woff2') format('woff2'); unicode-range: U+011E-011F, U+0130, U+015E-015F; }
+        @font-face { font-family: 'JetBrains Mono'; font-weight: 100 800; src: url('../assets/fonts/jetbrains-mono-latin.woff2') format('woff2'); unicode-range: U+0020-007E, U+00A0-00FF, U+0131, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2122; }
+        @font-face { font-family: 'JetBrains Mono'; font-weight: 100 800; src: url('../assets/fonts/jetbrains-mono-tr.woff2') format('woff2'); unicode-range: U+011E-011F, U+0130, U+015E-015F; }
+
+        @page { size: A4; margin: 0; }
+        :root { --ink: #16110d; --ink-2: #463b31; --accent: #d1581a; --accent-2: #f09a45; --line: #d9cfc3; --soft: #fbf3e8; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { background: #e9e4dd; }
+        body { font-family: 'Manrope', system-ui, sans-serif; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .ic { width: 1em; height: 1em; fill: currentColor; }
+        .sheet {
+            position: relative; overflow: hidden;
+            width: 210mm; height: 297mm; margin: 10mm auto; padding: 13mm 14mm 0;
+            background: #fff; display: flex; flex-direction: column;
+        }
+        @media print { html, body { background: #fff; } .sheet { margin: 0; } }
+
+        .deco { position: absolute; right: -38mm; top: -38mm; width: 120mm; height: 120mm; border-radius: 50%; border: 1.2mm solid var(--accent-2); opacity: 0.35; }
+        .deco--2 { right: -22mm; top: -22mm; width: 88mm; height: 88mm; border-width: 0.5mm; border-style: dashed; opacity: 0.6; }
+
+        .top { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 6mm; font-family: 'JetBrains Mono', monospace; font-size: 9.5pt; letter-spacing: 0.04em; color: var(--ink-2); }
+        .top__badge { display: inline-flex; align-items: center; gap: 2.4mm; padding: 1.8mm 3.6mm; border: 0.35mm solid var(--ink); border-radius: 99px; color: var(--ink); font-weight: 600; }
+        .top__dot { width: 2.4mm; height: 2.4mm; border-radius: 50%; background: var(--accent); }
+
+        .head { position: relative; display: grid; grid-template-columns: 1fr 34mm; align-items: end; gap: 6mm; margin-top: 7mm; }
+        h1 { font-family: 'Fraunces', Georgia, serif; font-weight: 450; font-variation-settings: 'opsz' 144; letter-spacing: -0.03em; line-height: 0.95; }
+        h1 .l1 { display: block; font-size: 49pt; }
+        h1 .l2 { position: relative; display: inline-block; font-size: 82pt; font-style: italic; font-weight: 400; color: var(--accent); line-height: 1; }
+        h1 .l2 svg { position: absolute; left: 0; bottom: -2.5mm; width: 100%; height: 6mm; overflow: visible; }
+        h1 .l2 path { fill: none; stroke: var(--accent-2); stroke-width: 5; stroke-linecap: round; }
+        .photo { width: 34mm; height: 40mm; border-radius: 17mm 17mm 5mm 5mm; overflow: hidden; border: 0.6mm solid var(--ink); margin-bottom: 3mm; }
+        .photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
+
+        .lead { margin-top: 6mm; font-size: 12pt; line-height: 1.45; color: var(--ink-2); max-width: 150mm; }
+        .lead strong { color: var(--ink); }
+
+        .main { display: grid; grid-template-columns: 1fr 76mm; gap: 7mm; margin-top: 7mm; }
+        .subjects { display: grid; gap: 2.2mm; align-content: start; }
+        .subj { display: grid; grid-template-columns: 11mm 1fr; align-items: center; gap: 3.5mm; padding: 2.6mm 3.5mm; border: 0.35mm solid var(--line); border-radius: 4mm; }
+        .subj__ic { display: grid; place-items: center; width: 11mm; height: 11mm; border-radius: 3mm; background: var(--soft); border: 0.3mm solid #ecd9c3; color: var(--accent); font-size: 5.2mm; }
+        .subj h2 { font-family: 'Fraunces', Georgia, serif; font-weight: 550; font-size: 14pt; line-height: 1.1; letter-spacing: -0.01em; }
+        .subj p { font-size: 9.5pt; color: var(--ink-2); font-weight: 600; line-height: 1.3; }
+
+        .qr { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 5mm 5mm 4.5mm; border: 0.7mm solid var(--ink); border-radius: 6mm; }
+        .qr__code { width: 64mm; height: 64mm; }
+        .qr__code svg { width: 100%; height: 100%; shape-rendering: crispEdges; }
+        .qr__cap { margin-top: 3mm; font-size: 11.5pt; font-weight: 800; line-height: 1.3; }
+        .qr__url { margin-top: 1.6mm; font-family: 'JetBrains Mono', monospace; font-size: 9.5pt; color: var(--ink-2); }
+
+        .info { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 3mm 6mm; margin-top: 5.5mm; padding: 3.4mm 5mm; border-radius: 4mm; background: var(--soft); border: 0.35mm solid #ecd9c3; font-size: 11pt; font-weight: 700; }
+        .info span { display: inline-flex; align-items: center; gap: 2mm; }
+        .info .ic { color: var(--accent); font-size: 4.4mm; }
+
+        .wa { display: flex; align-items: center; justify-content: center; gap: 4mm; margin-top: 4.5mm; }
+        .wa__ic { display: grid; place-items: center; width: 13mm; height: 13mm; border-radius: 50%; background: var(--ink); color: #fff; font-size: 7.5mm; }
+        .wa__txt { display: flex; flex-direction: column; line-height: 1.1; }
+        .wa__lbl { font-size: 10pt; font-weight: 700; color: var(--ink-2); letter-spacing: 0.02em; }
+        .wa__num { font-family: 'JetBrains Mono', monospace; font-size: 25pt; font-weight: 700; letter-spacing: 0.02em; }
+
+        .tear { position: relative; margin: auto -14mm 0; height: 46mm; display: grid; grid-template-columns: repeat(8, 1fr); border-top: 0.5mm dashed var(--ink); }
+        .tear__scissors { position: absolute; left: 10mm; top: -3.4mm; padding: 0 1.5mm; background: #fff; font-size: 5.5mm; color: var(--ink); }
+        .strip { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.2mm; white-space: nowrap; writing-mode: vertical-rl; transform: rotate(180deg); padding: 3mm 0; text-align: center; }
+        .strip + .strip { border-right: 0.35mm dashed #8b8178; }
+        .strip b { font-family: 'Fraunces', Georgia, serif; font-size: 10.5pt; font-weight: 600; }
+        .strip span { font-family: 'JetBrains Mono', monospace; font-size: 9pt; font-weight: 700; }
+        .strip small { font-family: 'JetBrains Mono', monospace; font-size: 7pt; color: var(--ink-2); }
+    </style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false"><!-- Icons: Font Awesome Free (CC BY 4.0) https://fontawesome.com/license/free --><symbol id="i-book-open" viewBox="0 0 512 512"><path d="M256 141.3l0 309.3 .5-.2C311.1 427.7 369.7 416 428.8 416l19.2 0 0-320-19.2 0c-42.2 0-84.1 8.4-123.1 24.6-16.8 7-33.4 13.9-49.7 20.7zM230.9 61.5L256 72 281.1 61.5C327.9 42 378.1 32 428.8 32L464 32c26.5 0 48 21.5 48 48l0 352c0 26.5-21.5 48-48 48l-35.2 0c-50.7 0-100.9 10-147.7 29.5l-12.8 5.3c-7.9 3.3-16.7 3.3-24.6 0l-12.8-5.3C184.1 490 133.9 480 83.2 480L48 480c-26.5 0-48-21.5-48-48L0 80C0 53.5 21.5 32 48 32l35.2 0c50.7 0 100.9 10 147.7 29.5z"/></symbol><symbol id="i-calculator" viewBox="0 0 384 512"><path d="M64 0C28.7 0 0 28.7 0 64L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-384c0-35.3-28.7-64-64-64L64 0zM96 64l192 0c17.7 0 32 14.3 32 32l0 32c0 17.7-14.3 32-32 32L96 160c-17.7 0-32-14.3-32-32l0-32c0-17.7 14.3-32 32-32zm16 168a24 24 0 1 1 -48 0 24 24 0 1 1 48 0zm80 24a24 24 0 1 1 0-48 24 24 0 1 1 0 48zm128-24a24 24 0 1 1 -48 0 24 24 0 1 1 48 0zM88 352a24 24 0 1 1 0-48 24 24 0 1 1 0 48zm128-24a24 24 0 1 1 -48 0 24 24 0 1 1 48 0zm80 24a24 24 0 1 1 0-48 24 24 0 1 1 0 48zM64 424c0-13.3 10.7-24 24-24l112 0c13.3 0 24 10.7 24 24s-10.7 24-24 24L88 448c-13.3 0-24-10.7-24-24zm232-24c13.3 0 24 10.7 24 24s-10.7 24-24 24-24-10.7-24-24 10.7-24 24-24z"/></symbol><symbol id="i-calendar-check" viewBox="0 0 448 512"><path d="M320 0c17.7 0 32 14.3 32 32l0 32 32 0c35.3 0 64 28.7 64 64l0 288c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 128C0 92.7 28.7 64 64 64l32 0 0-32c0-17.7 14.3-32 32-32s32 14.3 32 32l0 32 128 0 0-32c0-17.7 14.3-32 32-32zm22 161.7c-10.7-7.8-25.7-5.4-33.5 5.3L189.1 331.2 137 279.1c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l72 72c5 5 11.9 7.5 18.8 7s13.4-4.1 17.5-9.8L347.3 195.2c7.8-10.7 5.4-25.7-5.3-33.5z"/></symbol><symbol id="i-earth-europe" viewBox="0 0 512 512"><path d="M256.2 48c114.8 .1 207.8 93.2 207.8 208 0 22.1-3.4 43.4-9.8 63.4-2 .4-4.1 .6-6.2 .6l-2.7 0c-8.5 0-16.6-3.4-22.6-9.4l-29.3-29.3c-6-6-9.4-14.1-9.4-22.6l0-50.7c0-8.8 7.2-16 16-16s16-7.2 16-16-7.2-16-16-16l-24 0c-13.3 0-24 10.7-24 24s-10.7 24-24 24l-56 0c-8.8 0-16 7.2-16 16s-7.2 16-16 16l-25.4 0c-12.5 0-22.6-10.1-22.6-22.6 0-6 2.4-11.8 6.6-16l70.1-70.1c2.1-2.1 3.3-5 3.3-8 0-6.2-5.1-11.3-11.3-11.3l-14.1 0c-12.5 0-22.6-10.1-22.6-22.6 0-6 2.4-11.8 6.6-16l23.1-23.1c.8-.8 1.6-1.5 2.5-2.2zM438.4 356.1c-32.8 59.6-93.9 101.4-165.2 107.2-.7-2.3-1.1-4.8-1.1-7.3 0-13.3-10.7-24-24-24l-26.7 0c-8.5 0-16.6-3.4-22.6-9.4l-29.3-29.3c-6-6-9.4-14.1-9.4-22.6l0-66.7c0-17.7 14.3-32 32-32l98.7 0c8.5 0 16.6 3.4 22.6 9.4l29.3 29.3c6 6 14.1 9.4 22.6 9.4l5.5 0c8.5 0 16.6 3.4 22.6 9.4l16 16c4.2 4.2 10 6.6 16 6.6 4.8 0 9.3 1.5 13 4.1zM256 512l26.2-1.3c-8.6 .9-17.3 1.3-26.2 1.3zm26.2-1.3C411.3 497.6 512 388.6 512 256 512 114.6 397.4 0 256 0l0 0C114.6 0 0 114.6 0 256 0 383.5 93.2 489.3 215.3 508.8 228.5 510.9 242.1 512 256 512zM187.3 123.3l-32 32c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l32-32c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/></symbol><symbol id="i-flask" viewBox="0 0 448 512"><path d="M288 0L128 0C110.3 0 96 14.3 96 32s14.3 32 32 32L128 215.5 7.5 426.3C2.6 435 0 444.7 0 454.7 0 486.4 25.6 512 57.3 512l333.4 0c31.6 0 57.3-25.6 57.3-57.3 0-10-2.6-19.8-7.5-28.4L320 215.5 320 64c17.7 0 32-14.3 32-32S337.7 0 320 0L288 0zM192 215.5l0-151.5 64 0 0 151.5c0 11.1 2.9 22.1 8.4 31.8l41.6 72.7-164 0 41.6-72.7c5.5-9.7 8.4-20.6 8.4-31.8z"/></symbol><symbol id="i-laptop-code" viewBox="0 0 640 512"><path d="M64 96c0-35.3 28.7-64 64-64l384 0c35.3 0 64 28.7 64 64l0 240-64 0 0-240-384 0 0 240-64 0 0-240zM0 403.2C0 392.6 8.6 384 19.2 384l601.6 0c10.6 0 19.2 8.6 19.2 19.2 0 42.4-34.4 76.8-76.8 76.8L76.8 480C34.4 480 0 445.6 0 403.2zM281 209l-31 31 31 31c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-48-48c-9.4-9.4-9.4-24.6 0-33.9l48-48c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9zM393 175l48 48c9.4 9.4 9.4 24.6 0 33.9l-48 48c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l31-31-31-31c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z"/></symbol><symbol id="i-location-dot" viewBox="0 0 384 512"><path d="M0 188.6C0 84.4 86 0 192 0S384 84.4 384 188.6c0 119.3-120.2 262.3-170.4 316.8-11.8 12.8-31.5 12.8-43.3 0-50.2-54.5-170.4-197.5-170.4-316.8zM192 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128z"/></symbol><symbol id="i-scissors" viewBox="0 0 512 512"><path d="M192 256l-39.5 39.5c-12.6-4.9-26.2-7.5-40.5-7.5-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112c0-14.3-2.7-27.9-7.5-40.5L499.2 76.8c7.1-7.1 7.1-18.5 0-25.6-28.3-28.3-74.1-28.3-102.4 0L256 192 216.5 152.5c4.9-12.6 7.5-26.2 7.5-40.5 0-61.9-50.1-112-112-112S0 50.1 0 112 50.1 224 112 224c14.3 0 27.9-2.7 40.5-7.5L192 256zm97.9 97.9L396.8 460.8c28.3 28.3 74.1 28.3 102.4 0 7.1-7.1 7.1-18.5 0-25.6l-145.3-145.3-64 64zM64 112a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm48 240a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></symbol><symbol id="i-whatsapp" viewBox="0 0 448 512"><path d="M380.9 97.1c-41.9-42-97.7-65.1-157-65.1-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480 117.7 449.1c32.4 17.7 68.9 27 106.1 27l.1 0c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3 18.6-68.1-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1s56.2 81.2 56.1 130.5c0 101.8-84.9 184.6-186.6 184.6zM325.1 300.5c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8s-14.3 18-17.6 21.8c-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7s-12.5-30.1-17.1-41.2c-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2s-9.7 1.4-14.8 6.9c-5.1 5.6-19.4 19-19.4 46.3s19.9 53.7 22.6 57.4c2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4s4.6-24.1 3.2-26.4c-1.3-2.5-5-3.9-10.5-6.6z"/></symbol></svg>
+    <div class="sheet">
+        <span class="deco" aria-hidden="true"></span>
+        <span class="deco deco--2" aria-hidden="true"></span>
+
+        <div class="top">
+            <span class="top__badge"><span class="top__dot"></span>Işık Üniversitesi YBS — bölüm birincisi, tam burslu</span>
+        </div>
+
+        <div class="head">
+            <h1>
+                <span class="l1">Ortaokul &amp; Lise</span>
+                <span class="l2">Özel Ders<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M4 13 C 60 4, 120 3, 180 8 S 270 15, 296 6"/></svg></span>
+            </h1>
+            <div class="photo"><img src="../assets/img/fotografim-480.jpg" alt="Fatih Erdoğan"></div>
+        </div>
+
+        <p class="lead">Merhaba, ben <strong>Fatih Erdoğan</strong>. Öğrencinin seviyesine göre planlanan, sabırlı ve düzenli derslerle konuları birlikte sağlamlaştırıyoruz.</p>
+
+        <div class="main">
+            <div class="subjects">
+                <div class="subj"><span class="subj__ic"><svg class="ic"><use href="#i-calculator"/></svg></span><div><h2>Matematik</h2><p>Ortaokul ve lise</p></div></div>
+                <div class="subj"><span class="subj__ic"><svg class="ic"><use href="#i-flask"/></svg></span><div><h2>Fen Bilimleri</h2><p>Ortaokul</p></div></div>
+                <div class="subj"><span class="subj__ic"><svg class="ic"><use href="#i-book-open"/></svg></span><div><h2>Türkçe</h2><p>Ortaokul ve lise</p></div></div>
+                <div class="subj"><span class="subj__ic"><svg class="ic"><use href="#i-earth-europe"/></svg></span><div><h2>Sosyal Bilgiler &amp; sosyal dersler</h2><p>Ortaokul ve lise</p></div></div>
+                <div class="subj"><span class="subj__ic"><svg class="ic"><use href="#i-laptop-code"/></svg></span><div><h2>Kodlama / Bilgisayar</h2><p>Ortaokul ve lise · Python, web, algoritma</p></div></div>
+            </div>
+
+            <div class="qr">
+                <div class="qr__code"><svg role="img" aria-label="QR kod: https://fatiherdogan.live/ders/" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 41" class="segno"><path fill="#fff" d="M0 0h41v41h-41z"/><path class="qrline" stroke="#111" d="M4 4.5h7m1 0h3m4 0h1m1 0h2m1 0h2m1 0h2m1 0h7m-33 1h1m5 0h1m1 0h2m1 0h2m1 0h1m2 0h1m6 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h2m5 0h3m3 0h1m1 0h2m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m3 0h1m1 0h2m2 0h1m5 0h3m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m5 0h1m1 0h2m1 0h1m2 0h2m2 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h1m1 0h1m2 0h2m2 0h1m2 0h1m1 0h1m1 0h1m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h1m1 0h1m1 0h1m1 0h6m1 0h1m2 0h1m-23 1h3m1 0h1m1 0h2m2 0h1m1 0h1m2 0h1m4 0h1m2 0h3m2 0h3m-29 1h2m3 0h1m1 0h1m3 0h1m1 0h1m1 0h1m3 0h1m1 0h2m2 0h2m1 0h1m-31 1h1m3 0h1m2 0h1m2 0h6m1 0h2m1 0h1m3 0h2m1 0h1m1 0h1m-32 1h3m1 0h1m2 0h3m2 0h1m3 0h1m1 0h2m4 0h2m3 0h2m1 0h1m-33 1h1m2 0h1m1 0h2m1 0h8m2 0h1m1 0h4m1 0h1m2 0h1m2 0h1m-32 1h6m3 0h1m3 0h2m4 0h2m2 0h1m2 0h1m2 0h2m1 0h1m-33 1h1m2 0h1m2 0h1m4 0h4m1 0h1m1 0h3m1 0h1m2 0h4m1 0h2m-29 1h1m1 0h1m2 0h3m1 0h6m1 0h4m3 0h2m1 0h4m-32 1h3m2 0h1m1 0h1m3 0h1m6 0h1m5 0h1m1 0h2m2 0h2m-33 1h1m1 0h3m2 0h1m1 0h1m2 0h3m1 0h1m2 0h3m1 0h2m1 0h2m4 0h1m-33 1h2m1 0h1m2 0h1m1 0h1m1 0h3m2 0h4m1 0h3m4 0h2m1 0h2m-31 1h1m1 0h2m2 0h2m2 0h2m2 0h1m1 0h5m1 0h4m1 0h5m-29 1h3m3 0h1m1 0h2m1 0h1m1 0h3m2 0h1m1 0h1m2 0h3m1 0h2m-33 1h1m2 0h1m3 0h1m2 0h2m1 0h2m2 0h5m2 0h1m1 0h1m3 0h1m1 0h1m-33 1h1m2 0h1m1 0h2m1 0h1m3 0h1m2 0h1m5 0h2m4 0h1m1 0h3m-32 1h1m2 0h3m3 0h1m1 0h2m3 0h8m5 0h4m-33 1h1m5 0h2m1 0h2m1 0h1m1 0h2m4 0h1m2 0h7m1 0h2m-25 1h9m1 0h1m1 0h2m2 0h1m3 0h1m1 0h1m1 0h1m-33 1h7m3 0h1m1 0h2m3 0h1m2 0h2m1 0h2m1 0h1m1 0h4m-32 1h1m5 0h1m3 0h3m2 0h3m1 0h1m1 0h4m3 0h5m-33 1h1m1 0h3m1 0h1m1 0h2m3 0h3m1 0h2m1 0h2m2 0h5m2 0h2m-33 1h1m1 0h3m1 0h1m1 0h1m4 0h4m1 0h3m1 0h1m1 0h2m2 0h4m-32 1h1m1 0h3m1 0h1m1 0h1m1 0h1m3 0h1m2 0h2m2 0h1m1 0h1m1 0h2m2 0h2m-31 1h1m5 0h1m2 0h1m2 0h4m1 0h2m3 0h1m3 0h2m1 0h2m-31 1h7m3 0h3m1 0h1m2 0h1m2 0h1m2 0h2m4 0h1m1 0h1"/></svg></div>
+                <p class="qr__cap">Kodu okutun, dersleri ve iletişim bilgilerini görün</p>
+                <p class="qr__url">fatiherdogan.live/ders</p>
+            </div>
+        </div>
+
+        <div class="info">
+            <span><svg class="ic"><use href="#i-location-dot"/></svg>Yüz yüze (site içinde) veya online</span>
+            <span><svg class="ic"><use href="#i-calendar-check"/></svg>Ücret ve uygun saatler için WhatsApp'tan yazın</span>
+        </div>
+
+        <div class="wa">
+            <span class="wa__ic"><svg class="ic"><use href="#i-whatsapp"/></svg></span>
+            <span class="wa__txt"><span class="wa__lbl">WhatsApp</span><span class="wa__num">0541 385 40 28</span></span>
+        </div>
+
+        <div class="tear">
+            <span class="tear__scissors"><svg class="ic"><use href="#i-scissors"/></svg></span>
+            <div class="strip"><b>Özel Ders · Fatih</b><span>0541 385 40 28</span><small>fatiherdogan.live/ders</small></div>
+            <div class="strip"><b>Özel Ders · Fatih</b><span>0541 385 40 28</span><small>fatiherdogan.live/ders</small></div>
+            <div class="strip"><b>Özel Ders · Fatih</b><span>0541 385 40 28</span><small>fatiherdogan.live/ders</small></div>
+            <div class="strip"><b>Özel Ders · Fatih</b><span>0541 385 40 28</span><small>fatiherdogan.live/ders</small></div>
+            <div class="strip"><b>Özel Ders · Fatih</b><span>0541 385 40 28</span><small>fatiherdogan.live/ders</small></div>
+            <div class="strip"><b>Özel Ders · Fatih</b><span>0541 385 40 28</span><small>fatiherdogan.live/ders</small></div>
+            <div class="strip"><b>Özel Ders · Fatih</b><span>0541 385 40 28</span><small>fatiherdogan.live/ders</small></div>
+            <div class="strip"><b>Özel Ders · Fatih</b><span>0541 385 40 28</span><small>fatiherdogan.live/ders</small></div>
+        </div>
+    </div>
+</body>
+</html>
