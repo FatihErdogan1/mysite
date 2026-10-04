@@ -1,11 +1,12 @@
 # Fatih Erdoğan — Personal Portfolio
 
 Source code of my personal portfolio website, live at **[fatiherdogan.live](https://fatiherdogan.live)**.
-A single-page site (Turkish content) built from scratch with plain HTML, CSS and JavaScript, using GSAP for animations.
+A single-page site (Turkish / English) built from scratch with plain HTML, CSS and JavaScript, using GSAP for animations.
 
 ## Features
 
-- Single-page layout: hero, about, education & experience timeline, skills and contact sections
+- Single-page layout: hero, about, education & experience timeline, skills, projects and contact sections
+- TR / EN language switch — Turkish by default, the choice is remembered in `localStorage`; `?lang=en` or `?lang=tr` in the URL overrides it
 - Dark / light theme toggle — dark by default, the choice is remembered in `localStorage`
 - Entrance and scroll-reveal animations with GSAP + ScrollTrigger
 - Typewriter effect in the hero section
@@ -27,6 +28,7 @@ A single-page site (Turkish content) built from scratch with plain HTML, CSS and
 index.html      # page markup (all sections)
 style.css       # styles, dark/light theme variables, responsive rules
 script.js       # theme toggle, mobile menu, typewriter, scroll effects, GSAP animations
+i18n.js         # TR / EN switch: English strings + language logic (Turkish lives in index.html)
 *.jpg / *.png   # profile photo and logos
 fatihcv.pdf     # CV
 ```

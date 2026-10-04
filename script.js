@@ -16,10 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const applyTheme = (theme) => {
         htmlEl.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
+        try { localStorage.setItem('theme', theme); } catch (e) { /* storage unavailable */ }
     };
 
-    const saved = localStorage.getItem('theme');
+    let saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (e) { /* storage unavailable */ }
     applyTheme(saved || 'dark');
 
     themeBtn.addEventListener('click', () => {
@@ -58,14 +59,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- TYPEWRITER ---
     const el = document.querySelector('.typewriter');
     if (el) {
-        const texts = [
-            'Yönetim Bilişim Sistemleri Öğrencisi.',
-            'Mobil Geliştirici Adayı.',
+        const fallbackTexts = [
+            'Full-Stack Developer.',
+            'Android Developer.',
             'Problem Çözücüyüm.'
         ];
+        // Texts come from i18n.js for the active language (TR / EN)
+        const getTexts = () => {
+            const list = window.SiteI18n && window.SiteI18n.t('typewriter');
+            return Array.isArray(list) && list.length ? list : fallbackTexts;
+        };
+        let texts = getTexts();
         let ti = 0, ci = 0, erasing = false;
 
+        // On language change restart typing with the new texts
+        document.addEventListener('langchange', () => {
+            texts = getTexts();
+            ti = 0; ci = 0; erasing = false;
+            el.textContent = '';
+        });
+
         const tick = () => {
+            if (ti >= texts.length) ti = 0;
             const text = texts[ti];
             if (!erasing) {
                 el.textContent = text.slice(0, ++ci);
@@ -151,8 +166,10 @@ document.addEventListener('DOMContentLoaded', () => {
         '.about-photo-wrap',
         '.about-body',
         '.timeline-item',
-        '.skill-big',
-        '.skill-tile',
+        '.skill-category',
+        '.lang-item',
+        '.project-card',
+        '.projects-more',
         '.contact-box'
     ];
 
@@ -170,6 +187,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
+    });
+
+    // Text length changes with the language -> recalculate trigger positions
+    document.addEventListener('langchange', () => {
+        requestAnimationFrame(() => ScrollTrigger.refresh());
+        spy();
     });
 
 });
