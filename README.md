@@ -14,6 +14,7 @@ A single-page portfolio (Turkish / English) built from scratch with plain HTML, 
 - Pinned horizontal project showcase on large screens (stacked cards on mobile)
 - Lenis smooth scrolling on desktop; `prefers-reduced-motion` turns heavy motion off; no cursor/magnetic effects on touch devices
 - TR / EN language switch — Turkish by default, the choice is remembered in `localStorage`; `?lang=en` or `?lang=tr` in the URL overrides it
+- `/projeler/<slug>/` — case-study pages for HesAPP, envanter.io, Tarihi Yarım Ada and clubchains: overview, role, features, an animated SVG architecture diagram, engineering notes, real numbers, a screenshot gallery with lightbox and previous / next navigation; opened from the project cards with a brand-coloured page wipe
 - `/ders/` — mobile-first tutoring page (Turkish) with WhatsApp contact and a sticky WhatsApp button
 - `/ders/ilan.pdf` — printable A4 flyer with a QR code to `/ders/` (source: `ders/ilan.html`)
 
@@ -30,6 +31,9 @@ index.html        # portfolio markup (all sections)
 style.css         # portfolio styles, dark/light design tokens, responsive rules
 script.js         # motion & interactions (GSAP, ScrollTrigger, Lenis, cursor, canvas)
 i18n.js           # TR / EN switch: English strings + language logic (Turkish lives in index.html)
+projeler/         # case-study pages (<slug>/index.html + og.jpg), shared projeler.css / project.js, img/ screenshots (webp)
+assets/js/        # transitions.js — shared page-wipe transition
+sitemap.xml, robots.txt
 ders/             # tutoring page (index.html, ders.css, ders.js), flyer (ilan.html / ilan.pdf), qr.svg, og.jpg
 assets/brand/     # logo (outlined SVG variants + logo-original.svg), favicons / app icons
 assets/fonts/     # self-hosted woff2 fonts

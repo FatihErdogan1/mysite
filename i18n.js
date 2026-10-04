@@ -108,6 +108,7 @@
             'projects.heading': "What I've Built",
             'projects.live': 'Live',
             'projects.all': 'All projects',
+            'projects.details': 'Details',
             'projects.hint': 'Keep scrolling →',
             'projects.hesapp.role': 'Restaurant &amp; Café POS System · In Production',
             'projects.hesapp.desc': 'A POS system running in production at a real café: table orders from tablets, split payments, customer accounts, Z-reports, ESC/POS thermal printing, real-time sync and a customer menu kiosk. The backend is covered by 208 tests. The source code is private; the GitHub repo is a showcase.',
@@ -122,7 +123,7 @@
 
             'tutor.tag': 'On the side — Tutoring',
             'tutor.title': 'I tutor middle and high school students.',
-            'tutor.text': 'Maths, Science, Turkish, Social Studies and Coding — in person or online (lessons in Turkish).',
+            'tutor.text': 'Maths, Turkish, social studies and TYT exam prep — in person or online (lessons in Turkish).',
             'tutor.cta': 'Tutoring page',
 
             'contact.tag': '05 — Contact',
@@ -231,6 +232,10 @@
     }
 
     function init() {
+        // Pages can add their own English strings (e.g. project case studies) via window.SiteI18nExtra.
+        var extra = window.SiteI18nExtra;
+        if (extra && extra.en) { for (var k in extra.en) { if (Object.prototype.hasOwnProperty.call(extra.en, k)) translations.en[k] = extra.en[k]; } }
+        if (extra && extra.tr) { for (var j in extra.tr) { if (Object.prototype.hasOwnProperty.call(extra.tr, j)) translations.tr[j] = extra.tr[j]; } }
         captureDefaults();
         var initial = urlLang() || savedLang() || 'tr';
         if (initial !== 'tr') apply(initial);

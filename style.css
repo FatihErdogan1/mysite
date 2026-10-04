@@ -814,3 +814,22 @@ main > section, main > .marquee { overflow-x: clip; }
     .hero__logo { margin-left: -1.5%; width: 103%; }
     .scroll-cue { display: none; }
 }
+
+/* ---------- Page transition (shared with project pages) ---------- */
+.page-wipe {
+    position: fixed; inset: 0; z-index: 700;
+    display: grid; place-items: center;
+    background: radial-gradient(70% 60% at 50% 45%, #1b2c47 0%, #0c1524 70%);
+    transform: translateY(100%); visibility: hidden; pointer-events: none;
+}
+.page-wipe::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--grad-trace); }
+.wipe-in .page-wipe { transform: none; visibility: visible; }
+.page-wipe__inner { display: grid; justify-items: center; gap: 0.6rem; }
+.page-wipe__inner svg { width: min(170px, 42vw); height: auto; overflow: visible; }
+.page-wipe__name { font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: #b9c1cd; }
+
+/* "Details" button on project cards */
+.project-link--detail { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.project-link--detail .ic { transition: transform 0.4s var(--ease); }
+.project-link--detail:hover { background: var(--text); border-color: var(--text); color: var(--bg); }
+.project-link--detail:hover .ic { transform: translateX(3px); }
