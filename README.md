@@ -5,8 +5,10 @@ A single-page portfolio (Turkish / English) built from scratch with plain HTML, 
 
 ## Features
 
-- "Ink & amber" visual identity: warm dark theme with a light-theme toggle (circular View Transition reveal), Fraunces / Manrope / JetBrains Mono (self-hosted, subset to Latin + Turkish)
-- Intro preloader (once per session) and split-letter hero reveal, animated constellation canvas, drifting aura and grain
+- Brand identity from the personal logo (`assets/brand/`): navy, teal and antique-gold palette; dark navy theme and ivory light theme (circular View Transition reveal); Fraunces / Manrope / JetBrains Mono (self-hosted, subset to Latin + Turkish)
+- Logo text is outlined to SVG paths (Alex Brush + Manrope, both OFL) so it renders identically everywhere; variants for light/dark backgrounds, a compact header mark and a favicon set
+- Logo motifs in motion: stroke-drawn logo in the hero, tulip motif in the loader, circuit-trace section connectors and underline-with-node headings
+- Intro preloader (once per session), animated constellation canvas, drifting aura and grain
 - Magnetic buttons, custom cursor (desktop only), 3D tilt + pointer spotlight on cards
 - Scroll-triggered reveals, animated counters, scroll-scrubbed timeline progress line, velocity-reactive marquee
 - Pinned horizontal project showcase on large screens (stacked cards on mobile)
@@ -29,6 +31,7 @@ style.css         # portfolio styles, dark/light design tokens, responsive rules
 script.js         # motion & interactions (GSAP, ScrollTrigger, Lenis, cursor, canvas)
 i18n.js           # TR / EN switch: English strings + language logic (Turkish lives in index.html)
 ders/             # tutoring page (index.html, ders.css, ders.js), flyer (ilan.html / ilan.pdf), qr.svg, og.jpg
+assets/brand/     # logo (outlined SVG variants + logo-original.svg), favicons / app icons
 assets/fonts/     # self-hosted woff2 fonts
 assets/img/       # optimized photo variants (webp / jpg)
 assets/vendor/    # gsap, ScrollTrigger, lenis

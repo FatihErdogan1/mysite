@@ -1,0 +1,12 @@
+{
+  "name": "Fatih Erdoğan",
+  "short_name": "Fatih Erdoğan",
+  "icons": [
+    { "src": "/assets/brand/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/brand/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/assets/brand/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "theme_color": "#0c1524",
+  "background_color": "#0c1524",
+  "display": "browser"
+}

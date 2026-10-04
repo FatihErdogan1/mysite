@@ -23,7 +23,7 @@
     var metaTheme = $('meta[name="theme-color"]');
     function applyTheme(theme) {
         root.setAttribute('data-theme', theme);
-        if (metaTheme) metaTheme.setAttribute('content', theme === 'light' ? '#f5efe6' : '#0b0a09');
+        if (metaTheme) metaTheme.setAttribute('content', theme === 'light' ? '#f7f3ea' : '#0c1524');
         try { localStorage.setItem('theme', theme); } catch (e) { /* storage unavailable */ }
         document.dispatchEvent(new CustomEvent('themechange'));
     }
@@ -144,35 +144,21 @@
         timer = setTimeout(tick, reduced ? 0 : 900);
     })();
 
-    /* ---------------- Split hero name into characters ---------------- */
-    $$('[data-split]').forEach(function (el) {
-        var text = el.textContent;
-        var chars = Array.from(text);
-        el.textContent = '';
-        chars.forEach(function (ch, i) {
-            var s = document.createElement('span');
-            s.className = 'char';
-            s.textContent = ch;
-            if (el.classList.contains('split--accent')) s.style.backgroundPosition = (chars.length > 1 ? (i / (chars.length - 1)) * 100 : 0) + '% 50%';
-            el.appendChild(s);
-        });
-        el.classList.add('is-split');
-    });
-
     /* ---------------- Hero canvas: drifting constellation ---------------- */
     var canvasCtl = (function heroCanvas() {
         var canvas = $('.hero__canvas');
         if (!canvas || !canvas.getContext) return null;
         var ctx = canvas.getContext('2d');
         var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-        var w = 0, h = 0, pts = [], color = '255,154,82', running = false, visible = true, raf = 0;
+        var w = 0, h = 0, pts = [], color = '60,196,178', gold = '211,172,110', running = false, visible = true, raf = 0;
         var mouse = { x: -9999, y: -9999 };
 
-        function readColor() {
-            var hex = getComputedStyle(root).getPropertyValue('--accent').trim();
+        function rgb(name, fallback) {
+            var hex = getComputedStyle(root).getPropertyValue(name).trim();
             var m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-            if (m) color = parseInt(m[1], 16) + ',' + parseInt(m[2], 16) + ',' + parseInt(m[3], 16);
+            return m ? parseInt(m[1], 16) + ',' + parseInt(m[2], 16) + ',' + parseInt(m[3], 16) : fallback;
         }
+        function readColor() { color = rgb('--teal', color); gold = rgb('--accent', gold); }
         function resize() {
             var r = canvas.getBoundingClientRect();
             w = r.width; h = r.height;
@@ -209,7 +195,7 @@
                     ctx.strokeStyle = 'rgba(' + color + ',' + (0.35 * (1 - d / 200)).toFixed(3) + ')';
                     ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
                 }
-                ctx.fillStyle = 'rgba(' + color + ',0.75)';
+                ctx.fillStyle = 'rgba(' + (i % 3 === 0 ? gold : color) + ',' + (i % 3 === 0 ? '0.9' : '0.7') + ')';
                 ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
             }
         }
@@ -246,6 +232,7 @@
 
     /* ---------------- No GSAP? Show everything and stop here. ---------------- */
     if (!hasGsap) {
+        root.classList.add('no-anim');
         ready();
         root.classList.remove('show-preloader');
         if (canvasCtl) canvasCtl.start();
@@ -331,12 +318,36 @@
     }
 
     /* ---------------- Intro: preloader -> hero reveal ---------------- */
+    /* Stroke-draw an inline logo / motif SVG. Returns a timeline. */
+    function drawSvg(svg, opts) {
+        opts = opts || {};
+        var tl = gsap.timeline({ paused: !!opts.paused });
+        if (!svg) return tl;
+        var strokes = [];
+        $$('.lg-draw', svg).forEach(function (el) {
+            (el.tagName.toLowerCase() === 'path' ? [el] : $$('path', el)).forEach(function (p) { strokes.push(p); });
+        });
+        strokes.forEach(function (p) {
+            var len = p.getTotalLength ? p.getTotalLength() : 0;
+            gsap.set(p, { strokeDasharray: len + 1, strokeDashoffset: len + 1 });
+        });
+        var pops = [];
+        $$('.lg-pop', svg).forEach(function (el) { (el.tagName.toLowerCase() === 'circle' ? [el] : $$('circle', el)).forEach(function (c) { pops.push(c); }); });
+        var reveal = $('.lg-reveal', svg), name = $('.lg-name', svg), sub = $('.lg-sub', svg);
+        tl.to(strokes, { strokeDashoffset: 0, duration: opts.drawDur || 1.4, ease: 'power2.inOut', stagger: 0.06 }, 0)
+          .from(pops, { scale: 0, transformOrigin: '50% 50%', duration: 0.6, ease: 'back.out(3)', stagger: 0.04 }, (opts.drawDur || 1.4) * 0.45);
+        if (reveal) tl.fromTo(reveal, { attr: { width: 0 } }, { attr: { width: 560 }, duration: 1.5, ease: 'power2.inOut' }, 0.25);
+        else if (name) tl.from(name, { autoAlpha: 0, duration: 1.2, ease: 'power2.out' }, 0.3);
+        if (sub) tl.from(sub, { autoAlpha: 0, y: 8, duration: 0.9, ease: 'power3.out' }, 0.9);
+        return tl;
+    }
+
     function heroIntro(delay) {
         var tl = gsap.timeline({ delay: delay || 0, defaults: { ease: 'expo.out' } });
-        tl.from('.hero__name .char', { yPercent: 118, rotate: 7, duration: 1.4, stagger: 0.045 })
-          .from('[data-hero]', { y: 34, autoAlpha: 0, duration: 1.1, stagger: 0.09 }, '-=1.15')
+        tl.add(drawSvg($('.logo--hero')), 0)
+          .from('[data-hero]', { y: 34, autoAlpha: 0, duration: 1.1, stagger: 0.09 }, 0.35)
           .from('.hero__aura, .hero__canvas, .hero__grid-lines', { autoAlpha: 0, duration: 1.6, ease: 'power2.out' }, 0)
-          .add(runCounters, '-=0.7');
+          .add(runCounters, 1.0);
         ready();
         return tl;
     }
@@ -349,6 +360,7 @@
         var o = { v: 0 };
         try { sessionStorage.setItem('fe-intro', '1'); } catch (e) { /* ignore */ }
         var hero = heroIntro(0).pause();
+        drawSvg($('.pre-mark'), { drawDur: 1.1 });
         gsap.timeline()
             .to(o, { v: 100, duration: 1.25, ease: 'power2.inOut', onUpdate: function () { count.textContent = Math.round(o.v); } })
             .to(bar, { scaleX: 1, duration: 1.25, ease: 'power2.inOut' }, 0)
@@ -478,6 +490,23 @@
     // Contact panel grows in like a sheet
     gsap.fromTo('.contact__panel', { scale: 0.94, borderRadius: '80px 80px 0 0' }, { scale: 1, borderRadius: '40px 40px 0 0', ease: 'none', scrollTrigger: { trigger: '.contact', start: 'top bottom', end: 'top 30%', scrub: true } });
     gsap.from('.contact__text, .contact__cta, .contact__mail, .contact .socials', { y: 30, autoAlpha: 0, duration: 1, stagger: 0.1, ease: 'power3.out', scrollTrigger: { trigger: '.contact__heading', start: 'top 80%' } });
+
+    /* ---------------- Brand motifs: underline-with-node, circuit dividers, footer logo ---------------- */
+    $$('.section-title, .contact__heading').forEach(function (el) {
+        ScrollTrigger.create({ trigger: el, start: 'top 85%', once: true, onEnter: function () { el.classList.add('is-drawn'); } });
+    });
+    $$('.trace-divider').forEach(function (dv) {
+        var paths = $$('.dv-path', dv);
+        paths.forEach(function (p) { var len = p.getTotalLength(); gsap.set(p, { strokeDasharray: len + 1, strokeDashoffset: len + 1 }); });
+        var tl = gsap.timeline({ scrollTrigger: { trigger: dv, start: 'top 92%', end: 'top 45%', scrub: 0.8 } });
+        tl.from($$('.dv-node circle', dv), { scale: 0, transformOrigin: '50% 50%', stagger: 0.05, duration: 0.3 }, 0)
+          .to(paths, { strokeDashoffset: 0, ease: 'none', duration: 1 }, 0.1);
+    });
+    var footLogo = $('.logo--footer');
+    if (footLogo) {
+        var ftl = drawSvg(footLogo, { paused: true, drawDur: 1.6 });
+        ScrollTrigger.create({ trigger: footLogo, start: 'top 92%', once: true, onEnter: function () { ftl.play(); } });
+    }
 
     setupSpy();
 

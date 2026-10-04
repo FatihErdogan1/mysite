@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="340" viewBox="0 0 1200 340" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Fatih Erdoğan — hat ve teknoloji esintili logo</title>
+  <desc id="desc">Fatih Erdoğan adının tamamını akıcı hat esintili yazıyla birleştiren; devre yolları ve bağlantı noktalarıyla tamamlanmış kişisel yazı logosu.</desc>
+  <defs>
+    <linearGradient id="ink" x1="364" y1="105" x2="840" y2="206" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#17243B"/><stop offset=".68" stop-color="#203A55"/><stop offset="1" stop-color="#178F89"/>
+    </linearGradient>
+    <linearGradient id="trace" x1="260" y1="85" x2="940" y2="260" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C49A5A"/><stop offset=".52" stop-color="#35BBAA"/><stop offset="1" stop-color="#C49A5A"/>
+    </linearGradient>
+  </defs>
+  <!-- Mirrored circuit traces frame the calligraphic name. -->
+  <g stroke="url(#trace)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".9">
+    <path d="M310 141H262V114H224"/><path d="M326 154H283V184H244"/>
+    <path d="M890 141H938V114H976"/><path d="M874 154H917V184H956"/>
+    <path d="M262 114V96H284"/><path d="M938 114V96H916"/>
+    <path d="M385 235H322V251H286"/><path d="M815 235H878V251H914"/>
+  </g>
+  <g fill="#35BBAA"><circle cx="224" cy="114" r="4"/><circle cx="244" cy="184" r="4"/><circle cx="976" cy="114" r="4"/><circle cx="956" cy="184" r="4"/></g>
+  <g fill="#C49A5A"><circle cx="284" cy="96" r="3"/><circle cx="916" cy="96" r="3"/><circle cx="286" cy="251" r="3"/><circle cx="914" cy="251" r="3"/></g>
+  <!-- A restrained tulip/teardrop motif recalls Ottoman illumination, with a circuit node at its tip. -->
+  <g stroke="#C49A5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M486 73C526 43 559 45 584 62C594 69 606 69 616 62C641 45 674 43 714 73"/>
+    <path d="M595 62C584 51 589 37 600 29C611 37 616 51 605 62"/>
+    <path d="M576 61C588 57 612 57 624 61"/>
+  </g>
+  <circle cx="600" cy="29" r="3.5" fill="#35BBAA"/>
+  <text x="600" y="191" text-anchor="middle" fill="url(#ink)" font-family="Segoe Script, Monotype Corsiva, cursive" font-size="82" font-style="italic" font-weight="500" letter-spacing="-2">Fatih Erdoğan</text>
+  <!-- Flowing underline meets like a signal trace at the central node. -->
+  <path d="M345 218C452 218 470 207 528 211C560 213 574 221 596 222H600H604C626 221 640 213 672 211C730 207 748 218 855 218" stroke="url(#trace)" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="600" cy="222" r="5" fill="#17243B" stroke="#35BBAA" stroke-width="2"/>
+  <text x="600" y="272" text-anchor="middle" fill="#68768A" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="5">YÖNETİM BİLİŞİM SİSTEMLERİ</text>
+  <path d="M521 300H580M620 300H679" stroke="#C49A5A" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="600" cy="300" r="3" fill="#35BBAA"/>
+</svg>

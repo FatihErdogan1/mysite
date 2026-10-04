@@ -93,5 +93,14 @@
     gsap.from('.d-cta', { y: 60, scale: 0.96, autoAlpha: 0, duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: '.d-cta', start: 'top 88%' } });
     gsap.from('.d-cta > *:not(.d-cta__sym)', { y: 24, autoAlpha: 0, duration: 0.9, stagger: 0.08, ease: 'power3.out', clearProps: 'transform', scrollTrigger: { trigger: '.d-cta', start: 'top 75%' } });
 
+    /* Circuit-trace dividers grow out from their central node */
+    $$('.trace-divider').forEach(function (dv) {
+        var paths = $$('.dv-path', dv);
+        paths.forEach(function (p) { var l = p.getTotalLength(); gsap.set(p, { strokeDasharray: l + 1, strokeDashoffset: l + 1 }); });
+        gsap.timeline({ scrollTrigger: { trigger: dv, start: 'top 92%', end: 'top 50%', scrub: 0.8 } })
+            .from($$('.dv-node circle', dv), { scale: 0, transformOrigin: '50% 50%', stagger: 0.05, duration: 0.3 }, 0)
+            .to(paths, { strokeDashoffset: 0, ease: 'none', duration: 1 }, 0.1);
+    });
+
     window.addEventListener('load', function () { window.ScrollTrigger.refresh(); });
 })();
