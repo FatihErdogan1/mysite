@@ -1,7 +1,7 @@
 # Fatih Erdoğan — Personal Portfolio
 
-Source code of my personal portfolio website, live at **[fatiherdogan.live](https://fatiherdogan.live)**.
-A single-page portfolio (Turkish / English) built from scratch with plain HTML, CSS and JavaScript, using GSAP for animations, plus a Turkish tutoring page for parents at [/ders/](https://fatiherdogan.live/ders/).
+Source code of my personal portfolio website, live at **[erdoganfatih.com](https://erdoganfatih.com)**.
+A single-page portfolio (Turkish / English) built from scratch with plain HTML, CSS and JavaScript, using GSAP for animations, plus a Turkish tutoring page for parents at [/ders/](https://erdoganfatih.com/ders/).
 
 ## Features
 
@@ -54,7 +54,7 @@ python -m http.server 8000
 
 ## Contact
 
-- Website: [fatiherdogan.live](https://fatiherdogan.live)
+- Website: [erdoganfatih.com](https://erdoganfatih.com)
 - LinkedIn: [Fatih Erdoğan](https://www.linkedin.com/in/fatih-erdo%C4%9Fan-381b86311/)
 - GitHub: [@FatihErdogan1](https://github.com/FatihErdogan1)
 

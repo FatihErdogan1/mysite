@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /ders/ilan.html
 
-Sitemap: https://fatiherdogan.live/sitemap.xml
+Sitemap: https://erdoganfatih.com/sitemap.xml
