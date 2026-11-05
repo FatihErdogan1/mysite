@@ -23,11 +23,11 @@
     var metaTheme = $('meta[name="theme-color"]');
     function applyTheme(theme) {
         root.setAttribute('data-theme', theme);
-        if (metaTheme) metaTheme.setAttribute('content', theme === 'light' ? '#e9e9e7' : '#070707');
+        if (metaTheme) metaTheme.setAttribute('content', theme === 'light' ? '#f7f3ea' : '#070707');
         try { localStorage.setItem('theme', theme); } catch (e) { /* storage unavailable */ }
         document.dispatchEvent(new CustomEvent('themechange'));
     }
-    applyTheme(root.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
+    applyTheme(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
     if (themeBtn) {
         themeBtn.addEventListener('click', function (e) {
             var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
@@ -383,7 +383,15 @@
     if (canvasCtl) canvasCtl.start();
 
     if (reduced) {
-        // Minimal, non-moving page: just keep scroll spy and finish here.
+        // Minimal page: no scroll choreography. The decorative marquee still drifts very slowly
+        // (aria-hidden, no skew, no scroll boost) so it never looks broken.
+        $$('.marquee__row').forEach(function (row) {
+            var track = $('.marquee__track', row);
+            row.appendChild(track.cloneNode(true));
+            var dir = parseFloat(row.getAttribute('data-dir')) || -1;
+            if (dir < 0) gsap.fromTo(row, { xPercent: 0 }, { xPercent: -50, duration: 110, ease: 'none', repeat: -1 });
+            else gsap.fromTo(row, { xPercent: -50 }, { xPercent: 0, duration: 110, ease: 'none', repeat: -1 });
+        });
         setupSpy();
         return;
     }

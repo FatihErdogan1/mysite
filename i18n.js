@@ -133,9 +133,10 @@
             'tutor.cta': 'Tutoring page',
 
             'contact.tag': '05 — Contact',
-            'contact.heading': 'Let\'s <span class="gradient-text">Work Together.</span>',
-            'contact.text': "I'm always happy to hear about new opportunities and projects. If you'd like to connect or have a question, just use the button below.",
+            'contact.heading': 'Let\'s talk',
+            'contact.text': "I'm always happy to hear about new opportunities and projects. You can reach me through any of the links below.",
             'contact.cta': 'Say Hello!',
+            'contact.write': 'Write to me',
 
             'footer.credit': 'Designed &amp; built by',
             'footer.rights': 'All rights reserved.'

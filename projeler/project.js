@@ -18,7 +18,7 @@
     var themeBtn = $('#theme-toggle'), metaTheme = $('meta[name="theme-color"]');
     function applyTheme(t) {
         root.setAttribute('data-theme', t);
-        if (metaTheme) metaTheme.setAttribute('content', t === 'light' ? '#e9e9e7' : '#070707');
+        if (metaTheme) metaTheme.setAttribute('content', t === 'light' ? '#f7f3ea' : '#070707');
         try { localStorage.setItem('theme', t); } catch (e) { /* ignore */ }
     }
     applyTheme(root.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
