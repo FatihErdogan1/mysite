@@ -16,7 +16,7 @@ A single-page portfolio (Turkish / English) built from scratch with plain HTML, 
 - TR / EN language switch — Turkish by default, the choice is remembered in `localStorage`; `?lang=en` or `?lang=tr` in the URL overrides it
 - `/projeler/<slug>/` — case-study pages for HesAPP, envanter.io, Tarihi Yarım Ada and clubchains: overview, role, features, an animated SVG architecture diagram, engineering notes, real numbers, a screenshot gallery with lightbox and previous / next navigation; opened from the project cards with a brand-coloured page wipe
 - `/ders/` — mobile-first tutoring page (Turkish) with WhatsApp contact and a sticky WhatsApp button
-- `/ders/ilan.pdf` — printable A4 flyer with a QR code to `/ders/` (source: `ders/ilan.html`)
+- `/ders/ilan-renkli.pdf` — colour A4 flyer (teal + gold) with a QR code to `/ders/`, linked from the tutoring page; `/ders/ilan.pdf` is the black version (source for both: `ders/ilan.html`, colour via `ilan.html?renkli`)
 
 ## Tech Stack
 

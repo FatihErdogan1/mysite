@@ -24,24 +24,25 @@
         .hero::before { content: ''; position: absolute; right: -30mm; top: -46mm; width: 150mm; height: 150mm; border-radius: 50%; background: radial-gradient(closest-side, rgba(255,255,255,0.17), transparent); }
         .ring { position: absolute; right: 5mm; bottom: -16mm; width: 94mm; height: 94mm; border-radius: 50%; border: 0.35mm solid rgba(255,255,255,0.24); }
         .ring--2 { right: -9mm; bottom: -30mm; width: 122mm; height: 122mm; border-width: 0.25mm; border-style: dashed; border-color: rgba(255,255,255,0.14); }
+        .sym { position: absolute; left: var(--x); top: var(--y); font-weight: 700; font-size: calc(30pt * var(--s)); line-height: 1; color: #fff; opacity: 0.17; transform: rotate(var(--r, 0deg)); white-space: nowrap; }
+        .sym--mono { font-family: 'JetBrains Mono', monospace; }
+        .geo { position: absolute; left: var(--x); top: var(--y); width: var(--w); height: var(--w); transform: rotate(var(--r, 0deg)); fill: none; stroke: #fff; stroke-width: 1.6; stroke-linejoin: round; opacity: 0.2; overflow: visible; }
+        .geo--ink { stroke: var(--ink); opacity: 0.13; }
+        .main, .chips, .cta { position: relative; }
         .bar { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 6mm; }
         .wordmark { font-weight: 600; font-size: 10pt; letter-spacing: 0.2em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 2mm; }
         .wordmark::after { content: ''; width: 1.7mm; height: 1.7mm; border-radius: 50%; background: #fff; }
-        .badge { display: inline-flex; align-items: center; gap: 2mm; padding: 1.5mm 3.4mm; border: 0.3mm solid rgba(255,255,255,0.5); border-radius: 99px; font-family: 'JetBrains Mono', monospace; font-size: 7.6pt; letter-spacing: 0.03em; }
-        .badge i { width: 2mm; height: 2mm; border-radius: 50%; background: #fff; }
         .kicker { position: relative; margin-top: 6mm; font-family: 'JetBrains Mono', monospace; font-size: 9pt; letter-spacing: 0.22em; text-transform: uppercase; color: #b4b4b0; }
         h1 { position: relative; margin-top: 6mm; font-weight: 800; text-transform: uppercase; font-size: 90pt; line-height: 0.86; letter-spacing: -0.045em; color: #ffffff; }
         h1 span { display: block; padding-top: 0.1em; margin-top: -0.1em; }
         h1 span + span { color: #b9b9b5; }
         .lead { position: relative; margin-top: 5mm; max-width: 104mm; font-size: 11.5pt; line-height: 1.45; color: #cfcfcb; }
         .lead strong { color: #fff; font-weight: 600; }
-        .photo { position: absolute; right: 15mm; top: 28mm; width: 54mm; height: 68mm; border-radius: 27mm 27mm 5mm 5mm; overflow: hidden; border: 0.8mm solid #fff; background: #222; }
-        .photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; }
 
-        .body { flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 8mm 14mm 0; }
-        .main { display: grid; grid-template-columns: 1fr 66mm; gap: 8mm; align-items: start; }
-        .subjects { display: grid; align-content: start; }
-        .subj { display: grid; grid-template-columns: 9mm 1fr; gap: 2mm; align-items: baseline; padding: 2.5mm 0; border-top: 0.3mm solid var(--line); }
+        .body { position: relative; flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 9mm 14mm 13mm; }
+        .main { flex: 1; display: grid; grid-template-columns: 1fr 66mm; gap: 8mm; align-items: center; }
+        .subjects { display: grid; align-self: stretch; align-content: stretch; }
+        .subj { display: grid; grid-template-columns: 9mm 1fr; gap: 2mm; align-items: baseline; align-content: center; padding: 2.5mm 0; border-top: 0.3mm solid var(--line); }
         .subj:last-child { border-bottom: 0.3mm solid var(--line); }
         .subj__n { font-family: 'JetBrains Mono', monospace; font-size: 8pt; color: var(--ink-3); }
         .subj h2 { font-weight: 700; font-size: 13.5pt; line-height: 1.08; letter-spacing: -0.01em; text-transform: uppercase; }
@@ -53,7 +54,7 @@
         .qr__cap { margin-top: 3mm; font-size: 11pt; font-weight: 700; line-height: 1.3; }
         .qr__url { margin-top: 1.4mm; font-family: 'JetBrains Mono', monospace; font-size: 9pt; color: var(--ink-2); }
 
-        .chips { display: flex; flex-wrap: wrap; gap: 3mm; margin-top: 5mm; }
+        .chips { display: flex; flex-wrap: wrap; gap: 3mm; margin-top: 8mm; }
         .chip { display: inline-flex; align-items: center; gap: 2mm; padding: 2mm 4mm; border: 0.35mm solid var(--ink); border-radius: 99px; font-size: 10pt; font-weight: 500; }
         .chip .ic { font-size: 4.2mm; }
 
@@ -63,32 +64,69 @@
         .cta__lbl { font-size: 9pt; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #b4b4b0; }
         .cta__num { margin-top: 1mm; font-family: 'JetBrains Mono', monospace; font-size: 27pt; font-weight: 700; letter-spacing: 0.02em; }
 
-        .tear { position: relative; flex: none; margin: auto 0 0; height: 40mm; display: grid; grid-template-columns: repeat(8, 1fr); border-top: 0.5mm dashed var(--ink); }
-        .tear__scissors { position: absolute; left: 10mm; top: -3.4mm; padding: 0 1.5mm; background: #fff; font-size: 5.5mm; color: var(--ink); }
-        .strip { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.2mm; white-space: nowrap; writing-mode: vertical-rl; transform: rotate(180deg); padding: 3mm 0; text-align: center; }
-        .strip + .strip { border-right: 0.35mm dashed #8b8178; }
-        .strip b { font-weight: 700; font-size: 10.5pt; }
-        .strip span { font-family: 'JetBrains Mono', monospace; font-size: 9pt; font-weight: 700; }
-        .strip small { font-family: 'JetBrains Mono', monospace; font-size: 7pt; color: var(--ink-2); }
+        /* Renkli sürüm (durak/baskı): ilan.html?renkli — logodaki turkuaz + altın */
+        .renkli { --teal: #138a7d; --teal-2: #35bbaa; --gold: #c49a5a; --gold-2: #f2c46d; --line: #cfe6e2; }
+        .renkli .hero { background: radial-gradient(70% 90% at 100% 0%, rgba(255,255,255,0.16), transparent 60%), radial-gradient(60% 80% at 0% 100%, rgba(53,187,170,0.55), transparent 65%), linear-gradient(140deg, #0e6b62, #138a7d 55%, #17a091); }
+        .renkli .hero::before { background: radial-gradient(closest-side, rgba(255,255,255,0.22), transparent); }
+        .renkli .ring { border-color: rgba(255,255,255,0.35); }
+        .renkli .ring--2 { border-color: rgba(242,196,109,0.45); }
+        .renkli .wordmark::after { background: var(--gold-2); }
+        .renkli .kicker { color: #d7f1ec; }
+        .renkli h1 span + span { color: var(--gold-2); }
+        .renkli .lead { color: #e4f5f2; }
+        .renkli .sym { opacity: 0.3; }
+        .renkli .sym:nth-child(even) { color: var(--gold-2); opacity: 0.55; }
+        .renkli .hero .geo { opacity: 0.4; }
+        .renkli .hero .geo:nth-of-type(odd) { stroke: var(--gold-2); opacity: 0.7; }
+        .renkli .geo--ink { stroke: var(--teal); opacity: 0.35; }
+        .renkli .geo--ink:nth-of-type(even) { stroke: var(--gold); opacity: 0.5; }
+        .renkli .geo--ink circle[fill] { fill: var(--teal); }
+        .renkli .subj__n { color: var(--teal); font-weight: 700; }
+        .renkli .subj:nth-child(even) .subj__n { color: var(--gold); }
+        .renkli .qr { border-color: var(--teal); }
+        .renkli .qr__url { color: var(--teal); font-weight: 700; }
+        .renkli .chip { border-color: var(--teal); }
+        .renkli .chip .ic { color: var(--teal); }
+        .renkli .cta { background: linear-gradient(135deg, #e0b56a, #c49a5a); color: #1d1608; }
+        .renkli .cta__ic { color: #1fa855; }
+        .renkli .cta__lbl { color: rgba(29,22,8,0.72); font-weight: 700; }
     </style>
+    <script>if (/renkli/.test(location.search + location.hash)) document.documentElement.classList.add('renkli');</script>
 </head>
 <body>
-<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false"><!-- Icons: Font Awesome Free (CC BY 4.0) https://fontawesome.com/license/free --><symbol id="i-calendar-check" viewBox="0 0 448 512"><path d="M320 0c17.7 0 32 14.3 32 32l0 32 32 0c35.3 0 64 28.7 64 64l0 288c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 128C0 92.7 28.7 64 64 64l32 0 0-32c0-17.7 14.3-32 32-32s32 14.3 32 32l0 32 128 0 0-32c0-17.7 14.3-32 32-32zm22 161.7c-10.7-7.8-25.7-5.4-33.5 5.3L189.1 331.2 137 279.1c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l72 72c5 5 11.9 7.5 18.8 7s13.4-4.1 17.5-9.8L347.3 195.2c7.8-10.7 5.4-25.7-5.3-33.5z"/></symbol><symbol id="i-location-dot" viewBox="0 0 384 512"><path d="M0 188.6C0 84.4 86 0 192 0S384 84.4 384 188.6c0 119.3-120.2 262.3-170.4 316.8-11.8 12.8-31.5 12.8-43.3 0-50.2-54.5-170.4-197.5-170.4-316.8zM192 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128z"/></symbol><symbol id="i-scissors" viewBox="0 0 512 512"><path d="M192 256l-39.5 39.5c-12.6-4.9-26.2-7.5-40.5-7.5-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112c0-14.3-2.7-27.9-7.5-40.5L499.2 76.8c7.1-7.1 7.1-18.5 0-25.6-28.3-28.3-74.1-28.3-102.4 0L256 192 216.5 152.5c4.9-12.6 7.5-26.2 7.5-40.5 0-61.9-50.1-112-112-112S0 50.1 0 112 50.1 224 112 224c14.3 0 27.9-2.7 40.5-7.5L192 256zm97.9 97.9L396.8 460.8c28.3 28.3 74.1 28.3 102.4 0 7.1-7.1 7.1-18.5 0-25.6l-145.3-145.3-64 64zM64 112a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm48 240a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></symbol><symbol id="i-whatsapp" viewBox="0 0 448 512"><path d="M380.9 97.1c-41.9-42-97.7-65.1-157-65.1-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480 117.7 449.1c32.4 17.7 68.9 27 106.1 27l.1 0c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3 18.6-68.1-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1s56.2 81.2 56.1 130.5c0 101.8-84.9 184.6-186.6 184.6zM325.1 300.5c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8s-14.3 18-17.6 21.8c-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7s-12.5-30.1-17.1-41.2c-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2s-9.7 1.4-14.8 6.9c-5.1 5.6-19.4 19-19.4 46.3s19.9 53.7 22.6 57.4c2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4s4.6-24.1 3.2-26.4c-1.3-2.5-5-3.9-10.5-6.6z"/></symbol></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false"><!-- Icons: Font Awesome Free (CC BY 4.0) https://fontawesome.com/license/free --><symbol id="i-calendar-check" viewBox="0 0 448 512"><path d="M320 0c17.7 0 32 14.3 32 32l0 32 32 0c35.3 0 64 28.7 64 64l0 288c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 128C0 92.7 28.7 64 64 64l32 0 0-32c0-17.7 14.3-32 32-32s32 14.3 32 32l0 32 128 0 0-32c0-17.7 14.3-32 32-32zm22 161.7c-10.7-7.8-25.7-5.4-33.5 5.3L189.1 331.2 137 279.1c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l72 72c5 5 11.9 7.5 18.8 7s13.4-4.1 17.5-9.8L347.3 195.2c7.8-10.7 5.4-25.7-5.3-33.5z"/></symbol><symbol id="i-location-dot" viewBox="0 0 384 512"><path d="M0 188.6C0 84.4 86 0 192 0S384 84.4 384 188.6c0 119.3-120.2 262.3-170.4 316.8-11.8 12.8-31.5 12.8-43.3 0-50.2-54.5-170.4-197.5-170.4-316.8zM192 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128z"/></symbol><symbol id="i-whatsapp" viewBox="0 0 448 512"><path d="M380.9 97.1c-41.9-42-97.7-65.1-157-65.1-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480 117.7 449.1c32.4 17.7 68.9 27 106.1 27l.1 0c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3 18.6-68.1-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1s56.2 81.2 56.1 130.5c0 101.8-84.9 184.6-186.6 184.6zM325.1 300.5c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8s-14.3 18-17.6 21.8c-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7s-12.5-30.1-17.1-41.2c-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2s-9.7 1.4-14.8 6.9c-5.1 5.6-19.4 19-19.4 46.3s19.9 53.7 22.6 57.4c2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4s4.6-24.1 3.2-26.4c-1.3-2.5-5-3.9-10.5-6.6z"/></symbol></svg>
     <div class="sheet">
         <header class="hero">
             <span class="ring" aria-hidden="true"></span>
             <span class="ring ring--2" aria-hidden="true"></span>
+            <span class="sym" style="--x: 68%; --y: 12%; --s: 1.7; --r: -8deg" aria-hidden="true">π</span>
+            <span class="sym" style="--x: 86%; --y: 30%; --s: 1.25; --r: 6deg" aria-hidden="true">√x</span>
+            <span class="sym" style="--x: 56%; --y: 33%; --s: 0.9" aria-hidden="true">∑</span>
+            <span class="sym" style="--x: 72%; --y: 50%; --s: 1.35; --r: -4deg" aria-hidden="true">x²</span>
+            <span class="sym" style="--x: 88%; --y: 6%; --s: 0.85" aria-hidden="true">Aa</span>
+            <span class="sym sym--mono" style="--x: 88%; --y: 64%; --s: 0.7; --r: 5deg" aria-hidden="true">H₂O</span>
+            <span class="sym sym--mono" style="--x: 61%; --y: 78%; --s: 0.75" aria-hidden="true">1923</span>
+            <span class="sym sym--mono" style="--x: 82%; --y: 84%; --s: 0.85" aria-hidden="true">%</span>
+            <svg class="geo" style="--x: 78%; --y: 17%; --w: 13mm; --r: 12deg" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 37 35H3Z"/></svg>
+            <svg class="geo" style="--x: 50%; --y: 6%; --w: 9mm" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17"/><circle cx="20" cy="20" r="1.5" fill="#fff"/><path d="M20 20H37"/></svg>
+            <svg class="geo" style="--x: 92%; --y: 45%; --w: 10mm; --r: 20deg" viewBox="0 0 40 40" aria-hidden="true"><rect x="4" y="4" width="32" height="32"/></svg>
+            <svg class="geo" style="--x: 64%; --y: 63%; --w: 14mm; --r: -6deg" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 36 12V30L20 38 4 30V12Z M4 12 20 21 36 12 M20 21V38"/></svg>
+            <svg class="geo" style="--x: 93%; --y: 2%; --w: 8mm; --r: 15deg" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2 36 11V29L20 38 4 29V11Z"/></svg>
+            <svg class="geo" style="--x: 51%; --y: 50%; --w: 13mm; --r: 24deg" viewBox="0 0 40 40" aria-hidden="true"><path d="M14 3H26 M16 3V32A4 4 0 0 0 24 32V3 M16 21H24"/><circle cx="20" cy="28" r="1.2" fill="#fff"/></svg>
+            <svg class="geo" style="--x: 73%; --y: 71%; --w: 12mm; --r: -10deg" viewBox="0 0 40 40" aria-hidden="true"><path d="M14 3H26 M16.5 3V14L5 34A2.5 2.5 0 0 0 7.2 37.5H32.8A2.5 2.5 0 0 0 35 34L23.5 14V3 M9 27H31"/></svg>
             <div class="bar">
                 <span class="wordmark">Fatih Erdoğan</span>
-                <span class="badge"><i></i>Işık Üniversitesi YBS — bölüm birincisi, tam burslu</span>
             </div>
             <p class="kicker">Ortaokul &amp; Lise</p>
             <h1><span>Özel</span><span>Ders</span></h1>
             <p class="lead">Merhaba, ben <strong>Fatih Erdoğan</strong>. Öğrencinin seviyesine göre planlanan, sabırlı ve düzenli derslerle konuları birlikte sağlamlaştırıyoruz.</p>
-            <div class="photo"><img src="../assets/img/portre-800.jpg" alt="Fatih Erdoğan"></div>
         </header>
 
         <div class="body">
+            <svg class="geo geo--ink" style="--x: 66%; --y: 3%; --w: 11mm" viewBox="0 0 40 40" aria-hidden="true"><ellipse cx="20" cy="20" rx="17" ry="6.5"/><ellipse cx="20" cy="20" rx="17" ry="6.5" transform="rotate(60 20 20)"/><ellipse cx="20" cy="20" rx="17" ry="6.5" transform="rotate(-60 20 20)"/><circle cx="20" cy="20" r="2.2" fill="#0b0b0a"/></svg>
+            <svg class="geo geo--ink" style="--x: 85%; --y: 3%; --w: 11mm; --r: 35deg" viewBox="0 0 40 40" aria-hidden="true"><path d="M15 2H25V31L20 39 15 31Z M15 31H25 M15 8H25"/></svg>
+            <svg class="geo geo--ink" style="--x: 67%; --y: 62%; --w: 11mm" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17"/><ellipse cx="20" cy="20" rx="7.5" ry="17"/><path d="M3 20H37 M6 11H34 M6 29H34"/></svg>
+            <svg class="geo geo--ink" style="--x: 84%; --y: 62%; --w: 12mm" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 10C15 6 8 6 3 8V33C8 31 15 31 20 35 25 31 32 31 37 33V8C32 6 25 6 20 10Z M20 10V35"/></svg>
             <div class="main">
                 <div class="subjects">
                 <div class="subj"><span class="subj__n">01</span><div><h2>Matematik</h2><p>Ortaokul · 9. ve 10. sınıf</p></div></div>
@@ -115,17 +153,6 @@
                 <span class="cta__txt"><span class="cta__lbl">WhatsApp</span><span class="cta__num">0541 385 40 28</span></span>
             </div>
 
-            <div class="tear">
-                <span class="tear__scissors"><svg class="ic" aria-hidden="true"><use href="#i-scissors"/></svg></span>
-                <div class="strip"><b>Özel Ders · Fatih</b><span>0541 385 40 28</span><small>erdoganfatih.com/ders</small></div>
-            <div class="strip"><b>Özel Ders · Fatih</b><span>0541 385 40 28</span><small>erdoganfatih.com/ders</small></div>
-            <div class="strip"><b>Özel Ders · Fatih</b><span>0541 385 40 28</span><small>erdoganfatih.com/ders</small></div>
-            <div class="strip"><b>Özel Ders · Fatih</b><span>0541 385 40 28</span><small>erdoganfatih.com/ders</small></div>
-            <div class="strip"><b>Özel Ders · Fatih</b><span>0541 385 40 28</span><small>erdoganfatih.com/ders</small></div>
-            <div class="strip"><b>Özel Ders · Fatih</b><span>0541 385 40 28</span><small>erdoganfatih.com/ders</small></div>
-            <div class="strip"><b>Özel Ders · Fatih</b><span>0541 385 40 28</span><small>erdoganfatih.com/ders</small></div>
-            <div class="strip"><b>Özel Ders · Fatih</b><span>0541 385 40 28</span><small>erdoganfatih.com/ders</small></div>
-            </div>
         </div>
     </div>
 </body>

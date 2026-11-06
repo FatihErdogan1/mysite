@@ -392,6 +392,9 @@ svg [stop-color="#35BBAA"], svg [stop-color="#178F89"] { stop-color: var(--teal)
 .d-eyebrow--light { color: #b4b4b0; }
 .d-cta .d-btn--wa { background: #f4f4f2; color: #070707; box-shadow: none; }
 .d-cta .d-btn--wa:hover { background: #ffffff; }
+.d-cta__btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; }
+.d-cta .d-btn--ghost { border-color: rgba(255, 255, 255, 0.4); color: #f4f4f2; background: transparent; }
+.d-cta .d-btn--ghost:hover { border-color: #f4f4f2; background: #f4f4f2; color: #070707; }
 
 /* Footer, floating button */
 .d-footer__back { color: var(--ink); }
