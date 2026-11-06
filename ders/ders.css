@@ -4,43 +4,40 @@
    in a brighter, warmer "paper" mood for parents. Mobile-first.
    ===================================================================== */
 
-@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 300 800; font-display: swap; src: url('../assets/fonts/fraunces-latin.woff2') format('woff2'); unicode-range: U+0020-007E, U+00A0-00FF, U+0131, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2122; }
-@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 300 800; font-display: swap; src: url('../assets/fonts/fraunces-tr.woff2') format('woff2'); unicode-range: U+011E-011F, U+0130, U+015E-015F, U+20BA; }
-@font-face { font-family: 'Fraunces'; font-style: italic; font-weight: 300 800; font-display: swap; src: url('../assets/fonts/fraunces-italic-latin.woff2') format('woff2'); unicode-range: U+0020-007E, U+00A0-00FF, U+0131, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2122; }
-@font-face { font-family: 'Fraunces'; font-style: italic; font-weight: 300 800; font-display: swap; src: url('../assets/fonts/fraunces-italic-tr.woff2') format('woff2'); unicode-range: U+011E-011F, U+0130, U+015E-015F, U+20BA; }
-@font-face { font-family: 'Manrope'; font-style: normal; font-weight: 200 800; font-display: swap; src: url('../assets/fonts/manrope-latin.woff2') format('woff2'); unicode-range: U+0020-007E, U+00A0-00FF, U+0131, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2122; }
-@font-face { font-family: 'Manrope'; font-style: normal; font-weight: 200 800; font-display: swap; src: url('../assets/fonts/manrope-tr.woff2') format('woff2'); unicode-range: U+011E-011F, U+0130, U+015E-015F, U+20BA; }
+@font-face { font-family: 'Outfit'; font-style: normal; font-weight: 100 900; font-display: swap; src: url('../assets/fonts/outfit-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Outfit'; font-style: normal; font-weight: 100 900; font-display: swap; src: url('../assets/fonts/outfit-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 100 800; font-display: swap; src: url('../assets/fonts/jetbrains-mono-latin.woff2') format('woff2'); unicode-range: U+0020-007E, U+00A0-00FF, U+0131, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+2122; }
 @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 100 800; font-display: swap; src: url('../assets/fonts/jetbrains-mono-tr.woff2') format('woff2'); unicode-range: U+011E-011F, U+0130, U+015E-015F; }
 
 :root {
-    /* Brand palette: navy #17243B / #203A55 · teal #178F89 / #35BBAA · gold #C49A5A · slate #68768A */
+    /* Monochrome palette on warm paper. Old brand names kept as variables so existing rules and the inline logo still work. */
     --bg: #f7f3ea;
     --bg-2: #efe8da;
-    --card: #fffdf8;
-    --ink: #17243B;
-    --ink-2: #3e4c61;
-    --ink-3: #5d6a7d;
-    --line: rgba(23, 36, 59, 0.12);
-    --line-2: rgba(23, 36, 59, 0.22);
-    --accent: #7d5a1f;
-    --accent-2: #C49A5A;
-    --accent-soft: rgba(196, 154, 90, 0.18);
-    --teal: #0f7a73;
-    --teal-soft: rgba(23, 143, 137, 0.12);
-    --grad: linear-gradient(120deg, #d3ac6e 0%, #b28545 45%, #178F89 100%);
-    --wa: #0f6f68;
-    --wa-hover: #0b5c56;
-    --wa-glow: rgba(15, 111, 104, 0.35);
-    --shadow: 0 24px 60px -28px rgba(23, 36, 59, 0.32);
-    --shadow-sm: 0 10px 30px -18px rgba(23, 36, 59, 0.3);
+    --card: #fbf8f1;
+    --ink: #11110f;
+    --ink-2: #46433c;
+    --ink-3: #6a665c;
+    --line: rgba(20, 18, 12, 0.12);
+    --line-2: rgba(20, 18, 12, 0.24);
+    --accent: #11110f;
+    --accent-2: #11110f;
+    --accent-soft: rgba(17, 17, 15, 0.07);
+    --teal: #11110f;
+    --teal-soft: rgba(17, 17, 15, 0.06);
+    --gold: #5f5b51;
+    --grad: linear-gradient(120deg, #6d695f 0%, #1d1c19 55%, #000000 100%);
+    --wa: #11110f;
+    --wa-hover: #2d2b26;
+    --wa-glow: rgba(17, 17, 15, 0.28);
+    --shadow: 0 24px 60px -30px rgba(60, 48, 24, 0.35);
+    --shadow-sm: 0 10px 30px -20px rgba(60, 48, 24, 0.3);
     --bg-node: #f7f3ea;
-    --logo-ink-a: #17243B;
-    --logo-ink-b: #203A55;
-    --logo-ink-c: #178F89;
-    --logo-sub: #5d6a7d;
-    --f-display: 'Fraunces', Georgia, serif;
-    --f-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --logo-ink-a: #11110f;
+    --logo-ink-b: #2a2824;
+    --logo-ink-c: #5a564c;
+    --logo-sub: #6a665c;
+    --f-display: 'Outfit', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --f-body: 'Outfit', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     --f-mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
     --r: 20px;
     --r-lg: 28px;
@@ -91,7 +88,7 @@ strong { font-weight: 800; }
 .d-header.is-scrolled { background: rgba(247, 243, 234, 0.85); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--line); }
 .d-header__in { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
 .d-brand { display: inline-flex; align-items: center; gap: 0.6rem; font-weight: 800; }
-.d-brand__mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--grad); color: #fff8ef; font-family: var(--f-display); font-style: italic; font-weight: 500; }
+.d-brand__mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--grad); color: #fff8ef; font-family: var(--f-display); font-style: normal; font-weight: 500; }
 .d-brand__name { font-size: 0.95rem; }
 .d-header__nav { display: none; gap: 1.6rem; font-size: 0.92rem; font-weight: 700; color: var(--ink-2); }
 .d-header__nav a { position: relative; padding: 0.3rem 0; }
@@ -108,7 +105,7 @@ strong { font-weight: 800; }
 @keyframes dblob { to { transform: translate(-60px, 50px) scale(1.12); } }
 .d-sym {
     position: absolute; left: var(--x); top: var(--y);
-    font-family: var(--f-display); font-style: italic; font-size: calc(2.6rem * var(--s)); line-height: 1;
+    font-family: var(--f-display); font-style: normal; font-size: calc(2.6rem * var(--s)); line-height: 1;
     color: var(--accent-2); opacity: 0.22; will-change: transform;
 }
 .d-sym--mono { font-family: var(--f-mono); font-style: normal; }
@@ -128,7 +125,7 @@ strong { font-weight: 800; }
 }
 .d-line { display: block; overflow: hidden; padding-bottom: 0.12em; margin-bottom: -0.12em; }
 .d-line > span { display: inline-block; }
-.d-hl { position: relative; display: inline-block; font-style: italic; font-weight: 400; color: var(--teal); white-space: nowrap; }
+.d-hl { position: relative; display: inline-block; font-style: normal; font-weight: 400; color: var(--teal); white-space: nowrap; }
 .d-hl__mark { position: absolute; left: -2%; bottom: -0.08em; width: 104%; height: 0.32em; overflow: visible; }
 .d-hl__mark path { fill: none; stroke: var(--accent-2); stroke-width: 6; stroke-linecap: round; opacity: 0.7; }
 .d-hero__lead { font-size: clamp(1.02rem, 2.6vw, 1.18rem); color: var(--ink-2); max-width: 36rem; margin-bottom: 1.6rem; }
@@ -186,7 +183,7 @@ strong { font-weight: 800; }
 .d-levels { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.8rem; }
 .d-levels span { padding: 0.18rem 0.65rem; border-radius: 999px; font-size: 0.76rem; font-weight: 800; color: var(--c); background: var(--c-soft); }
 .d-subject p { color: var(--ink-2); font-size: 0.97rem; }
-.d-subject__deco { position: absolute; right: 1.1rem; top: 0.9rem; font-family: var(--f-display); font-style: italic; font-size: 2.6rem; line-height: 1; color: var(--c); opacity: 0.13; pointer-events: none; }
+.d-subject__deco { position: absolute; right: 1.1rem; top: 0.9rem; font-family: var(--f-display); font-style: normal; font-size: 2.6rem; line-height: 1; color: var(--c); opacity: 0.13; pointer-events: none; }
 .d-code { margin-top: 1rem; padding: 0.9rem 1rem; border-radius: 14px; background: #17243B; color: #f4efe4; font-family: var(--f-mono); font-size: 0.82rem; line-height: 1.6; overflow-x: auto; white-space: pre; }
 .d-code .k { color: #e8c995; }
 .d-code .f { color: #5fd3c2; }
@@ -318,7 +315,7 @@ strong { font-weight: 800; }
 }
 .d-title::after {
     content: ''; display: block; width: min(200px, 60%); height: 16px; margin-top: 0.7rem;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 16' fill='none'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='220' y1='0' y2='0' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23C49A5A'/%3E%3Cstop offset='.55' stop-color='%23178F89'/%3E%3Cstop offset='1' stop-color='%23C49A5A' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M2 8C40 8 52 4 74 5.5C86 6.4 92 9.5 100 9.6C108 9.5 114 6.4 126 5.5C148 4 170 8 218 8' stroke='url(%23g)' stroke-width='1.8' stroke-linecap='round'/%3E%3Ccircle cx='100' cy='9.4' r='3.6' fill='%23f7f3ea' stroke='%23178F89' stroke-width='1.5'/%3E%3C/svg%3E") 0 50% / 100% 100% no-repeat;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 16' fill='none'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='220' y1='0' y2='0' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%236d695f'/%3E%3Cstop offset='.55' stop-color='%2311110f'/%3E%3Cstop offset='1' stop-color='%236d695f' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M2 8C40 8 52 4 74 5.5C86 6.4 92 9.5 100 9.6C108 9.5 114 6.4 126 5.5C148 4 170 8 218 8' stroke='url(%23g)' stroke-width='1.8' stroke-linecap='round'/%3E%3Ccircle cx='100' cy='9.4' r='3.6' fill='%23f7f3ea' stroke='%2311110f' stroke-width='1.5'/%3E%3C/svg%3E") 0 50% / 100% 100% no-repeat;
 }
 .d-cta__title::after { display: none; }
 .trace-divider { position: absolute; left: 50%; top: 0; z-index: 2; width: min(1100px, 94vw); transform: translate(-50%, -50%); pointer-events: none; }
@@ -326,3 +323,80 @@ strong { font-weight: 800; }
 .d-footer__logo { display: block; width: min(300px, 80vw); margin: 0 auto 1.4rem; }
 .logo { display: block; width: 100%; height: auto; overflow: visible; }
 @media (max-width: 400px) { .d-brand__logo { height: 32px; } }
+
+
+/* =====================================================================
+   NEW THEME: Outfit, giant uppercase headings, pill buttons, black / paper rhythm
+   ===================================================================== */
+svg [stroke="#C49A5A"] { stroke: var(--gold); }
+svg [stroke="#35BBAA"], svg [stroke="#178F89"] { stroke: var(--teal); }
+svg [fill="#C49A5A"] { fill: var(--gold); }
+svg [fill="#35BBAA"], svg [fill="#178F89"] { fill: var(--teal); }
+svg [stop-color="#C49A5A"] { stop-color: var(--gold); }
+svg [stop-color="#35BBAA"], svg [stop-color="#178F89"] { stop-color: var(--teal); }
+
+/* Buttons */
+.d-btn { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.d-btn--sm { font-size: 0.72rem; }
+.d-btn--lg, .d-btn--xl { font-size: 0.82rem; }
+.d-btn--ghost { background: transparent; }
+.d-btn--ghost:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+/* Header: pill nav */
+.d-header__nav { gap: 2px; padding: 4px; border-radius: 999px; background: var(--accent-soft); border: 1px solid var(--line); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.d-header__nav a { padding: 0.55rem 1.05rem; border-radius: 999px; transition: background 0.3s, color 0.3s; }
+.d-header__nav a::after { display: none; }
+.d-header__nav a:hover { background: var(--ink); color: var(--bg); }
+
+/* Type */
+.d-hero__title { font-weight: 700; text-transform: uppercase; font-size: clamp(2.5rem, 9.4vw, 6.2rem); line-height: 0.92; letter-spacing: -0.04em; font-variation-settings: normal; }
+.d-hl { color: transparent; font-weight: 700; background: linear-gradient(180deg, color-mix(in srgb, var(--ink) 60%, transparent), color-mix(in srgb, var(--ink) 18%, transparent)); -webkit-background-clip: text; background-clip: text; }
+.d-hl__mark { display: none; }
+.d-title, .d-cta__title { font-weight: 700; text-transform: uppercase; font-size: clamp(2rem, 5.6vw, 4.4rem); line-height: 0.95; letter-spacing: -0.035em; font-variation-settings: normal; }
+.d-title::after { display: none; }
+.d-eyebrow { color: var(--ink-3); }
+.d-subject h3, .d-trust__card h3, .d-step h3 { font-weight: 600; letter-spacing: -0.02em; }
+.d-kicker__dot { background: var(--ink); box-shadow: 0 0 0 4px var(--accent-soft); }
+.d-blob--1 { background: radial-gradient(circle, rgba(255, 255, 255, 0.7), transparent 65%); }
+.d-blob--2 { background: radial-gradient(circle, rgba(190, 160, 110, 0.22), transparent 65%); }
+.d-sym { color: var(--ink); opacity: 0.1; }
+.d-sym:nth-child(odd) { color: var(--ink); }
+.d-ring { border-color: rgba(17, 17, 15, 0.28); }
+.d-float__big { font-weight: 600; }
+
+/* Subject cards: everything monochrome */
+.d-subject { --c: #11110f !important; --c-soft: rgba(17, 17, 15, 0.07) !important; }
+.d-code { background: #0b0b0b; color: #f4f4f2; }
+.d-code .k { color: #ffffff; }
+.d-code .f { color: #bdbdb8; }
+.d-code .c { color: #7f7f7a; }
+
+/* "Neden ben" turns black */
+.d-section--tint {
+    --bg: #070707; --bg-2: #0e0e0e; --card: rgba(255, 255, 255, 0.045);
+    --ink: #f4f4f2; --ink-2: #b4b4b0; --ink-3: #7f7f7a;
+    --line: rgba(255, 255, 255, 0.11); --line-2: rgba(255, 255, 255, 0.22);
+    --accent: #f4f4f2; --accent-soft: rgba(255, 255, 255, 0.1); --teal: #ffffff; --teal-soft: rgba(255, 255, 255, 0.09);
+    --shadow-sm: none; --shadow: none;
+    background: var(--bg); color: var(--ink);
+}
+.d-section--tint .d-trust__big { background: #f4f4f2; color: #070707; box-shadow: none; }
+
+/* Steps */
+.d-step.is-on .d-step__num { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+
+/* CTA: black panel, big metallic title, light pill button */
+.d-cta { background: radial-gradient(80% 90% at 50% 0%, rgba(255, 255, 255, 0.14), transparent 60%), #070707; color: #f4f4f2; }
+.d-cta__title { background: linear-gradient(180deg, #ffffff 0%, #e8e8e5 45%, #8e8e8a 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+.d-cta__text, .d-cta__num { color: #b4b4b0; }
+.d-eyebrow--light { color: #b4b4b0; }
+.d-cta .d-btn--wa { background: #f4f4f2; color: #070707; box-shadow: none; }
+.d-cta .d-btn--wa:hover { background: #ffffff; }
+
+/* Footer, floating button */
+.d-footer__back { color: var(--ink); }
+.d-fab::before { border-color: var(--wa); }
+
+/* Hero title must fit its column: "ÖĞRENCİLERİNE" is the widest word */
+.d-hero__title { font-size: min(4.2rem, calc((100vw - 3.2rem) / 8.4)); }
+@media (min-width: 860px) { .d-hero__title { font-size: min(4.2rem, 5vw); } }

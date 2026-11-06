@@ -23,11 +23,11 @@
     var metaTheme = $('meta[name="theme-color"]');
     function applyTheme(theme) {
         root.setAttribute('data-theme', theme);
-        if (metaTheme) metaTheme.setAttribute('content', theme === 'light' ? '#f7f3ea' : '#0c1524');
+        if (metaTheme) metaTheme.setAttribute('content', theme === 'light' ? '#f7f3ea' : '#070707');
         try { localStorage.setItem('theme', theme); } catch (e) { /* storage unavailable */ }
         document.dispatchEvent(new CustomEvent('themechange'));
     }
-    applyTheme(root.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
+    applyTheme(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
     if (themeBtn) {
         themeBtn.addEventListener('click', function (e) {
             var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
@@ -358,12 +358,21 @@
     } else if (root.classList.contains('show-preloader')) {
         var pre = $('.preloader'), count = $('.js-pre-count'), bar = $('.preloader__bar span');
         var o = { v: 0 };
+        /* Multilingual greeting cycles while the counter runs */
+        var greet = $('.preloader__greet');
+        if (greet) {
+            var first = (root.lang || 'tr').slice(0, 2) === 'en' ? 'Hello' : 'Merhaba';
+            var words = [first, 'Hello', 'Bonjour', 'Hola', 'Ciao', 'Hallo', 'Olá', 'Привет', 'こんにちは', '안녕하세요', 'مرحبا', first]
+                .filter(function (w, i, a) { return i === 0 || w !== a[i - 1]; });
+            greet.textContent = words[0];
+            words.forEach(function (w, i) { if (i) gsap.delayedCall(i * 0.15, function () { greet.textContent = w; }); });
+        }
         try { sessionStorage.setItem('fe-intro', '1'); } catch (e) { /* ignore */ }
         var hero = heroIntro(0).pause();
         drawSvg($('.pre-mark'), { drawDur: 1.1 });
         gsap.timeline()
-            .to(o, { v: 100, duration: 1.25, ease: 'power2.inOut', onUpdate: function () { count.textContent = Math.round(o.v); } })
-            .to(bar, { scaleX: 1, duration: 1.25, ease: 'power2.inOut' }, 0)
+            .to(o, { v: 100, duration: 1.8, ease: 'none', onUpdate: function () { count.textContent = Math.round(o.v); } })
+            .to(bar, { scaleX: 1, duration: 1.8, ease: 'none' }, 0)
             .to('.preloader__inner', { y: -30, autoAlpha: 0, duration: 0.5, ease: 'power2.in' }, '+=0.1')
             .fromTo(pre, { clipPath: 'inset(0% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 100% 0%)', duration: 1, ease: 'expo.inOut' }, '-=0.15')
             .add(function () { hero.play(); }, '-=0.55')
@@ -374,13 +383,21 @@
     if (canvasCtl) canvasCtl.start();
 
     if (reduced) {
-        // Minimal, non-moving page: just keep scroll spy and finish here.
+        // Minimal page: no scroll choreography. The decorative marquee still drifts very slowly
+        // (aria-hidden, no skew, no scroll boost) so it never looks broken.
+        $$('.marquee__row').forEach(function (row) {
+            var track = $('.marquee__track', row);
+            row.appendChild(track.cloneNode(true));
+            var dir = parseFloat(row.getAttribute('data-dir')) || -1;
+            if (dir < 0) gsap.fromTo(row, { xPercent: 0 }, { xPercent: -50, duration: 110, ease: 'none', repeat: -1 });
+            else gsap.fromTo(row, { xPercent: -50 }, { xPercent: 0, duration: 110, ease: 'none', repeat: -1 });
+        });
         setupSpy();
         return;
     }
 
     /* ---------------- Hero parallax on scroll ---------------- */
-    gsap.to('.hero__inner', { yPercent: 12, autoAlpha: 0.25, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+    gsap.to('.hero__inner', { yPercent: -5, autoAlpha: 0.25, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
     gsap.to('.hero__aura', { yPercent: 25, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
 
     /* ---------------- Marquee (velocity-reactive) ---------------- */

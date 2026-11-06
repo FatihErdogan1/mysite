@@ -110,6 +110,12 @@
             'projects.all': 'All projects',
             'projects.details': 'Details',
             'projects.hint': 'Keep scrolling →',
+            'screens.tag': 'Screenshots',
+            'screens.heading': 'Screens, up close',
+            'screens.tabs': 'Choose a project',
+            'screens.hint': 'Click a card to open it full size',
+            'screens.dialog': 'Screenshot',
+            'screens.close': 'Close',
             'projects.hesapp.role': 'Restaurant &amp; Café POS System · In Production',
             'projects.hesapp.desc': 'A POS system running in production at a real café: table orders from tablets, split payments, customer accounts, Z-reports, ESC/POS thermal printing, real-time sync and a customer menu kiosk. The backend is covered by 208 tests. The source code is private; the GitHub repo is a showcase.',
             'projects.envanter.role': 'Full-Stack Inventory &amp; Asset Management · Team Project',
@@ -127,9 +133,10 @@
             'tutor.cta': 'Tutoring page',
 
             'contact.tag': '05 — Contact',
-            'contact.heading': 'Let\'s <span class="gradient-text">Work Together.</span>',
-            'contact.text': "I'm always happy to hear about new opportunities and projects. If you'd like to connect or have a question, just use the button below.",
+            'contact.heading': 'Let\'s talk',
+            'contact.text': "I'm always happy to hear about new opportunities and projects. You can reach me through any of the links below.",
             'contact.cta': 'Say Hello!',
+            'contact.write': 'Write to me',
 
             'footer.credit': 'Designed &amp; built by',
             'footer.rights': 'All rights reserved.'
