@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "mysite-seven-omega.vercel.app" }],
+      "destination": "https://erdoganfatih.com/:path*",
+      "permanent": true
+    }
+  ]
+}
